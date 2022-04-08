@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.dev.js"
+    "start": "webpack serve --config webpack.config.dev.js --open",
+    "lint": "eslint \"./src/**/*.{ts,tsx,js,jsx}\" || true",
+    "lint:fix": "eslint --fix \"./src/**/*.{ts,tsx,js,jsx}\" || true",
+    "prettier": "prettier --write --config ./.prettierrc \"./src/**/*.{ts,tsx,js,jsx}\" || true"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +15,8 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
