@@ -16,6 +16,7 @@ module.exports = {
   devServer: {
     https: true,
     host: 'localhost',
+    historyApiFallback: true,
     compress: true,
     hot: true,
     port: 5500,
