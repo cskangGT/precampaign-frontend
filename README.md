@@ -20,6 +20,4 @@
 
 ![image](https://user-images.githubusercontent.com/42740545/162650957-1f7ad8b9-1a44-44e7-8446-75894e829984.png)
 
-![Uploading image.png…]()
-
-
+![image](https://user-images.githubusercontent.com/42740545/162651103-8a34e4a9-d11d-43d6-9bb0-639b6ad0fef4.png)
