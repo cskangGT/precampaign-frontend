@@ -19,7 +19,7 @@ module.exports = {
     historyApiFallback: true,
     compress: true,
     hot: true,
-    port: 5500,
+    port: 3000,
     open: true,
     client: {
       progress: true,
