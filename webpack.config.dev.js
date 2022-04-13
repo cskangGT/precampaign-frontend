@@ -14,12 +14,11 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: { extensions: ['.js', '.json', '.ts', '.tsx'] },
   devServer: {
-    https: true,
     host: 'localhost',
     historyApiFallback: true,
     compress: true,
     hot: true,
-    port: 5500,
+    port: 3000,
     open: true,
     client: {
       progress: true,
