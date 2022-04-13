@@ -1,15 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import UserList from './UserList';
-import UserData from './UserData';
 
 export default function List() {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState([]);
 
   const back = () => {
     return navigate('/precampain-list');
   };
+
+  useEffect(() => {
+    fetch('/data/userData.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUserData(res.Data);
+      });
+  }, []);
 
   return (
     <>
@@ -28,16 +38,16 @@ export default function List() {
             <KeywordTitle>Keyword</KeywordTitle>
             <CampaignNameTitle>Campaign Name</CampaignNameTitle>
           </TitleBox>
-          {UserData.map((data) => {
+          {userData.map(({ name, gender, accountName, height, weight, keyword, campaignName }) => {
             return (
               <UserList
-                name={data.name}
-                gender={data.gender}
-                accountName={data.accountName}
-                height={data.height}
-                weight={data.weight}
-                keyword={data.keyword}
-                campaignName={data.campaignName}
+                name={name}
+                gender={gender}
+                accountName={accountName}
+                height={height}
+                weight={weight}
+                keyword={keyword}
+                campaignName={campaignName}
               />
             );
           })}
