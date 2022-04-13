@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './pages/App';
 import Expenses from './components/Expenses';
 import Invoices from './components/Invoices';
-import AllAcceptedApplicantsList from './pages/AllAcceptedApplicantsList';
-import Login from './pages/Login';
 
 function Router() {
   return (
