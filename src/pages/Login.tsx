@@ -42,11 +42,11 @@ export default function Login() {
           <CompanyName>F & F</CompanyName>
           <LoginBox>
             <IdBox>
-              <Id>아이디</Id>
+              <Id>ID</Id>
               <IdInput placeholder="아이디를 입력해주세요." onChange={handleIdInput}></IdInput>
             </IdBox>
             <PwBox>
-              <Pw>비밀번호</Pw>
+              <Pw>PW</Pw>
               <PwInput placeholder="비밀번호를 입력해주세요" onChange={handlePwInput} type="password"></PwInput>
             </PwBox>
           </LoginBox>
