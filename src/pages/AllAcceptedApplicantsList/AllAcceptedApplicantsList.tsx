@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import UserList from './UserList';
 import UserData from './UserData';
 
 export default function List() {
+  const navigate = useNavigate();
+
+  const back = () => {
+    return navigate('/precampain-list');
+  };
+
   return (
     <>
       <Container>
         <Nav>
-          <GoBack>뒤로 가기</GoBack>
+          <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
           <TitleBox>
