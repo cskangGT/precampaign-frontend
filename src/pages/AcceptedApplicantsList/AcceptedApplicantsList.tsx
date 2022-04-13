@@ -7,11 +7,15 @@ import UserData from './UserData';
 export default function AcceptedApplicantsList() {
   const navigate = useNavigate();
 
+  const back = () => {
+    return navigate('/precampaign-list');
+  };
+
   return (
     <>
       <Container>
         <Nav>
-          <GoBack>뒤로 가기</GoBack>
+          <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
           {UserData.map((data) => {
