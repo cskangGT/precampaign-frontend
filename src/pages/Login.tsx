@@ -2,6 +2,61 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+export default function Login() {
+  const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
+
+  const handleIdInput = (event: any) => {
+    setIdValue(event.target.value);
+  };
+
+  const handlePwInput = (event: any) => {
+    setPwValue(event.target.value);
+  };
+
+  const navigate = useNavigate();
+
+  const handleFetch = () => {
+    fetch('http://172.1.7.241:8081/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: idValue,
+        password: pwValue,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.access_token) {
+          localStorage.setItem('token', result.access_token);
+          navigate('/');
+        } else {
+          alert('아이디와 비밀번호를 확인해주세요!');
+        }
+      });
+  };
+
+  return (
+    <>
+      <Container>
+        <LoginContainer>
+          <CompanyName>F & F</CompanyName>
+          <LoginBox>
+            <IdBox>
+              <Id>아이디</Id>
+              <IdInput placeholder="아이디를 입력해주세요." onChange={handleIdInput}></IdInput>
+            </IdBox>
+            <PwBox>
+              <Pw>비밀번호</Pw>
+              <PwInput placeholder="비밀번호를 입력해주세요" onChange={handlePwInput} type="password"></PwInput>
+            </PwBox>
+          </LoginBox>
+          <LoginBtn onClick={handleFetch}>로그인</LoginBtn>
+        </LoginContainer>
+      </Container>
+    </>
+  );
+}
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -104,58 +159,3 @@ const LoginBtn = styled.button`
   font-size: 20px;
   border: 1px solid gray;
 `;
-
-export default function Login() {
-  const [idValue, setIdValue] = useState('');
-  const [pwValue, setPwValue] = useState('');
-
-  const handleIdInput = (event: any) => {
-    setIdValue(event.target.value);
-  };
-
-  const handlePwInput = (event: any) => {
-    setPwValue(event.target.value);
-  };
-
-  const navigate = useNavigate();
-
-  const handleFetch = () => {
-    fetch('http://172.1.7.241:8080/users/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: idValue,
-        password: pwValue,
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          navigate('/');
-        } else {
-          alert('아이디와 비밀번호를 확인해주세요!');
-        }
-      });
-  };
-
-  return (
-    <>
-      <Container>
-        <LoginContainer>
-          <CompanyName>F & F</CompanyName>
-          <LoginBox>
-            <IdBox>
-              <Id>아이디</Id>
-              <IdInput placeholder="아이디를 입력해주세요." onChange={handleIdInput}></IdInput>
-            </IdBox>
-            <PwBox>
-              <Pw>비밀번호</Pw>
-              <PwInput placeholder="비밀번호를 입력해주세요" onChange={handlePwInput} type="password"></PwInput>
-            </PwBox>
-          </LoginBox>
-          <LoginBtn onClick={handleFetch}>로그인</LoginBtn>
-        </LoginContainer>
-      </Container>
-    </>
-  );
-}
