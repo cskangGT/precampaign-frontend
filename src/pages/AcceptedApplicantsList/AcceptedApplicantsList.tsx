@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import UserCard from './UserCard';
-import UserData from './UserData';
 
 export default function AcceptedApplicantsList() {
+  const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
 
   const back = () => {
     return navigate('/precampaign-list');
   };
+
+  useEffect(() => {
+    fetch('/data/data.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUserData(res.Data);
+      });
+  }, []);
 
   return (
     <>
@@ -18,8 +28,8 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {UserData.map((data) => {
-            return <UserCard name={data.name} snsId={data.snsId} />;
+          {userData.map(({ name, snsId }) => {
+            return <UserCard name={name} snsId={snsId} />;
           })}
         </ListContainer>
       </Container>
