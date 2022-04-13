@@ -12,7 +12,7 @@ function Router() {
         <Route path="/" element={<App />} />
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/invoices" element={<Invoices />} />
-        <Route path="acceptedapplicantslist" element={<AcceptedApplicantsList />} />
+        <Route path="/acceptedapplicantslist" element={<AcceptedApplicantsList />} />
       </Routes>
     </BrowserRouter>
   );

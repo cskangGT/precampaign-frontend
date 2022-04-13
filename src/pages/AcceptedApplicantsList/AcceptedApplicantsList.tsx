@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import UserCard from './UserCard';
 import UserData from './UserData';
 
 export default function AcceptedApplicantsList() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Container>
