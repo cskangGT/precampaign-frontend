@@ -3,20 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 export default function Login() {
-  const [idValue, setIdValue] = useState('');
-  const [pwValue, setPwValue] = useState('');
+  const [idValue, setIdValue] = useState<string>('');
+  const [pwValue, setPwValue] = useState<string>('');
 
-  const handleIdInput = (event: any) => {
-    setIdValue(event.target.value);
+  const handleIdInput = (e: { target: { value: string } }) => {
+    setIdValue(e.target.value);
   };
 
-  const handlePwInput = (event: any) => {
-    setPwValue(event.target.value);
+  const handlePwInput = (e: { target: { value: string } }) => {
+    setPwValue(e.target.value);
   };
 
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    console.log(idValue);
+    console.log(pwValue);
     fetch('http://172.1.7.241:8081/users/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -26,6 +28,7 @@ export default function Login() {
     })
       .then((response) => response.json())
       .then((result) => {
+        console.log(result);
         if (result.access_token) {
           localStorage.setItem('token', result.access_token);
           navigate('/');
