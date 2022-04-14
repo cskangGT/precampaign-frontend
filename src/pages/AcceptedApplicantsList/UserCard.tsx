@@ -2,26 +2,31 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 interface User {
+  thumbnail: string;
   name: string;
   birth: string;
   contact: string;
   address: string;
 }
 
-export default function UserCard({ name, birth, contact, address }: User) {
+export default function UserCard({ thumbnail, name, birth, contact, address }: User) {
   return (
     <>
       <Container>
-        <UserImg src="https://cdn.pixabay.com/photo/2022/04/03/13/54/woman-7109043_1280.jpg"></UserImg>
+        <UserImg src={thumbnail}></UserImg>
         <UserInfoBox>
           <UserName>{name}</UserName>
-          <UserAddress>{address}</UserAddress>
+          <UserAddress>{address.slice(0, 2)}</UserAddress>
         </UserInfoBox>
         <UserInfoBox>
-          <UserBirth>{birth}</UserBirth>
+          <UserBirth>
+            {birth.slice(0, 4)}년 {birth.slice(4, 6)}월 {birth.slice(6, 8)}일
+          </UserBirth>
         </UserInfoBox>
         <UserInfoBox>
-          <UserContact>{contact}</UserContact>
+          <UserContact>
+            {contact.slice(0, 3)}.{contact.slice(3, 7)}.{contact.slice(7, 11)}
+          </UserContact>
         </UserInfoBox>
       </Container>
     </>
@@ -41,6 +46,8 @@ const Container = styled.div`
 const UserImg = styled.img`
   width: 300px;
   border: 1px solid gray;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 const UserInfoBox = styled.div`
@@ -70,4 +77,6 @@ const UserBirth = styled(UserInfo)`
 
 const UserContact = styled(UserInfo)`
   width: 300px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;

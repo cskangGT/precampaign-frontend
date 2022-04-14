@@ -28,8 +28,8 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {userData.map(({ name, birth, contact, address }) => {
-            return <UserCard name={name} birth={birth} contact={contact} address={address} />;
+          {userData.map(({ thumbnail, name, birth, contact, address }) => {
+            return <UserCard thumbnail={thumbnail} name={name} birth={birth} contact={contact} address={address} />;
           })}
         </ListContainer>
       </Container>
@@ -38,7 +38,7 @@ export default function AcceptedApplicantsList() {
 }
 
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: lightgray;
   display: flex;
