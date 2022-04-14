@@ -28,8 +28,8 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {userData.map(({ name, snsId }) => {
-            return <UserCard name={name} snsId={snsId} />;
+          {userData.map(({ name, birth, contact, address }) => {
+            return <UserCard name={name} birth={birth} contact={contact} address={address} />;
           })}
         </ListContainer>
       </Container>

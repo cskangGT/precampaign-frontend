@@ -3,22 +3,37 @@
     {
       "id": 1,
       "name": "강성훈",
-      "snsId": "keng"
+      "birth": "19931212",
+      "contact": "01042829138",
+      "address": "서울시 마포구"
     },
     {
       "id": 2,
       "name": "김준영",
-      "snsId": "jun"
+      "birth": "19931207",
+      "contact": "01097479738",
+      "address": "용인시 기흥구"
     },
     {
       "id": 3,
       "name": "김가람휘",
-      "snsId": "kimkrh"
+      "birth": "19981008",
+      "contact": "01029482838",
+      "address": "안산시 단원구"
     },
     {
       "id": 4,
       "name": "김광일",
-      "snsId": "gwang"
+      "birth": "19941202",
+      "contact": "01075739948",
+      "address": "인천광역시 계양구"
+    },
+    {
+      "id": 5,
+      "name": "김광일",
+      "birth": 19941202,
+      "contact": "01075739948",
+      "address": "인천광역시 계양구"
     }
   ]
 }
