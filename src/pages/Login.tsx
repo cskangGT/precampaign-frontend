@@ -16,7 +16,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const handleFetch = () => {
+  const handleLogin = () => {
     fetch('http://172.1.7.241:8081/users/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -50,7 +50,9 @@ export default function Login() {
               <PwInput placeholder="비밀번호를 입력해주세요" onChange={handlePwInput} type="password"></PwInput>
             </PwBox>
           </LoginBox>
-          <LoginBtn onClick={handleFetch}>로그인</LoginBtn>
+          <LoginBtn type="submit" onClick={handleLogin}>
+            로그인
+          </LoginBtn>
         </LoginContainer>
       </Container>
     </>
@@ -84,7 +86,7 @@ const CompanyName = styled.div`
   font-size: 60px;
 `;
 
-const LoginBox = styled.div`
+const LoginBox = styled.form`
   width: 600px;
   height: 200px;
   /* background-color: blue; */
