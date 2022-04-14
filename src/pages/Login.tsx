@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 export default function Login() {
-  const [idValue, setIdValue] = useState<string>('');
-  const [pwValue, setPwValue] = useState<string>('');
+  const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
 
   const handleIdInput = (e: { target: { value: string } }) => {
     setIdValue(e.target.value);
@@ -25,6 +25,9 @@ export default function Login() {
         email: idValue,
         password: pwValue,
       }),
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
     })
       .then((response) => response.json())
       .then((result) => {
