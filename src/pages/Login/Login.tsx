@@ -45,7 +45,7 @@ export default function Login() {
     <>
       <Container>
         <LoginContainer>
-          <CompanyName>F & F</CompanyName>
+          <CompanyName>MLB</CompanyName>
           <LoginBox>
             <IdBox>
               <Id>ID</Id>
