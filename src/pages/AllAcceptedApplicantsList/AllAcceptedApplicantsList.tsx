@@ -6,6 +6,7 @@ import UserList from './UserList';
 export default function List() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState([]);
+  const token: any = localStorage.getItem('token');
 
   const back = () => {
     return navigate('/precampain-list');
@@ -13,7 +14,9 @@ export default function List() {
 
   useEffect(() => {
     fetch('/data/userData.json', {
-      method: 'GET',
+      headers: {
+        Authoriization: token,
+      },
     })
       .then((res) => res.json())
       .then((res) => {
