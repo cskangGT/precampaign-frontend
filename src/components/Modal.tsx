@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import UserCard from './UserCard';
+import StarRating from './StarRating';
 
 export default function Modal() {
   const [modal, setModal] = useState(false);
@@ -20,6 +21,13 @@ export default function Modal() {
         setUserData(res.Data);
       });
   });
+
+  const sendRate = () => {
+    fetch('', {
+      method: 'POST',
+      body: JSON.stringify({}),
+    }).then((res) => res.json);
+  };
 
   return (
     <>
@@ -47,7 +55,28 @@ export default function Modal() {
                 return <UserCard thumbnail={thumbnail} />;
               })}
             </ListContainer>
-            <ModalClose onClick={toggleModal}>Close</ModalClose>
+            <ModalClose onClick={toggleModal}>닫기</ModalClose>
+            <EvaluationStandard>
+              <BackgroundBox>
+                <Background>배경</Background>
+                <StarRate>
+                  <StarRating />
+                </StarRate>
+              </BackgroundBox>
+              <TrendBox>
+                <Trend>트렌드</Trend>
+                <StarRate>
+                  <StarRating />
+                </StarRate>
+              </TrendBox>
+              <CreativeBox>
+                <Creative>독창성</Creative>
+                <StarRate>
+                  <StarRating />
+                </StarRate>
+              </CreativeBox>
+            </EvaluationStandard>
+            <EvaluationBtn>평가 완료</EvaluationBtn>
           </ModalContent>
         </ModalWindow>
       )}
@@ -66,7 +95,7 @@ const ModalOpen = styled.button`
 const ModalClose = styled.button`
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   padding: 9px 12px;
   cursor: pointer;
 `;
@@ -103,6 +132,7 @@ const ModalContent = styled.div`
 `;
 
 const UserInfoBox = styled.div`
+  margin-top: 30px;
   width: 100%;
   height: 100px;
   background-color: gray;
@@ -161,4 +191,65 @@ const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+`;
+
+const EvaluationStandard = styled.div`
+  position: absolute;
+  bottom: 100px;
+  right: 75px;
+  width: 300px;
+  height: 150px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Evaluation = styled.div`
+  width: 80px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+`;
+
+const Background = styled(Evaluation)``;
+const Trend = styled(Evaluation)``;
+const Creative = styled(Evaluation)``;
+
+const EvaluationBox = styled.div`
+  width: 290px;
+  height: 45px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const BackgroundBox = styled(EvaluationBox)``;
+const TrendBox = styled(EvaluationBox)``;
+const CreativeBox = styled(EvaluationBox)``;
+
+const EvaluationBtn = styled.button`
+  position: absolute;
+  bottom: 30px;
+  right: 75px;
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const StarRate = styled.div`
+  width: 210px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
