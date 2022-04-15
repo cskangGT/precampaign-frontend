@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AllAcceptedApplicantsList from './pages/AllAcceptedApplicantsList/AllAcceptedApplicantsList';
-import Login from './pages/Login';
-
+import AcceptedApplicantsList from './pages/AcceptedApplicantsList/AcceptedApplicantsList';
+import Login from './pages/Login/Login';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/all-accepted-applicants-list" element={<AllAcceptedApplicantsList />} />
         <Route path="/" element={<Login />} />
         <Route path="/accepted-applicants-list" element={<AcceptedApplicantsList />} />
       </Routes>
