@@ -25,6 +25,8 @@
     "react-router-dom": "^6.3.0",
     "react-star-rating-component": "^1.4.1",
     "react-star-ratings": "^2.3.0"
+    "react-router-dom": "^6.3.0",
+    "recoil": "^0.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
