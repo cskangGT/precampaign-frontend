@@ -8,6 +8,7 @@ import CampaignCardList from './CampaignCardList/CampaignCardList';
 
 const CampaignList: React.FC = () => {
   const BASE_URL = '172.1.7.241:8081';
+  const token = localStorage.getItem('access_token');
   const location = useLocation();
   const navigate = useNavigate();
   const [searchInputText, setSearchInputText] = useState<string>('');
@@ -33,7 +34,7 @@ const CampaignList: React.FC = () => {
     console.log('location.search', location.search);
     console.log(localStorage.getItem('access_token'));
     fetch(`http://${BASE_URL}/campaigns${location.search}`, {
-      headers: { authorization: localStorage.getItem('access_token') },
+      headers: { authorization: token },
       //TODO: Bloker!!해결할것
     })
       .then((res) => res.json())
