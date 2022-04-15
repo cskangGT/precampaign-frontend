@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 interface User {
   name: string;
   gender: string;
+  platform: string;
   accountName: string;
   height: number;
   weight: number;
@@ -11,7 +12,7 @@ interface User {
   campaignName: string;
 }
 
-export default function UserList({ name, gender, accountName, height, weight, keyword, campaignName }: User) {
+export default function UserList({ name, gender, platform, accountName, height, weight, keyword, campaignName }: User) {
   return (
     <>
       <Container>
@@ -20,6 +21,7 @@ export default function UserList({ name, gender, accountName, height, weight, ke
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
+        <Platform>{platform}</Platform>
         <AccountName>{accountName}</AccountName>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
@@ -54,8 +56,11 @@ const Name = styled(UserCard)`
 const Gender = styled(UserCard)`
   width: 5%;
 `;
+const Platform = styled(UserCard)`
+  width: 10%;
+`;
 const AccountName = styled(UserCard)`
-  width: 15%;
+  width: 10%;
 `;
 const Height = styled(UserCard)`
   width: 5%;
@@ -64,7 +69,7 @@ const Weight = styled(UserCard)`
   width: 5%;
 `;
 const Keyword = styled(UserCard)`
-  width: 15%;
+  width: 10%;
 `;
 const CampaignName = styled(UserCard)`
   width: 25%;
