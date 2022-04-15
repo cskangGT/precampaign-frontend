@@ -1,18 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import { CampaignCardInfo } from '../../types';
+import { campaginNameState, campaignStatusState } from '../../Recoil/Atoms/atomCampaign';
 
 interface CampaignCardProps {
   campaignCard: CampaignCardInfo;
 }
 
 function CampaignCard({ campaignCard }: CampaignCardProps) {
-  const { id, thumbnail_url, title, evaluation_start_date } = campaignCard;
+  const { id, thumbnail_url, title, status, evaluation_start_date } = campaignCard;
   const navigate = useNavigate();
+  const setCampainName = useSetRecoilState(campaginNameState);
+  const setCampaignStatus = useSetRecoilState(campaignStatusState);
 
-  const goToApplicantList = (e: number) => {
-    navigate(`/campaigns/${e}`);
+  const goToApplicantList = (promId: number, campTitle: string, campStatus: string) => {
+    navigate(`/campaigns/${promId}`);
+    setCampainName(campTitle);
+    setCampaignStatus(campStatus);
   };
 
   return (
@@ -30,7 +36,7 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
         <Card>
           <GoToApplicants
             onClick={() => {
-              goToApplicantList(id);
+              goToApplicantList(id, title, status);
             }}
           >
             신청자 보러 가기

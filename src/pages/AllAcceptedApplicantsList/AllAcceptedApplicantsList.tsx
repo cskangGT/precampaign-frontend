@@ -12,9 +12,7 @@ export default function List() {
   };
 
   useEffect(() => {
-    fetch('/data/userData.json', {
-      method: 'GET',
-    })
+    fetch('/data/userData.json')
       .then((res) => res.json())
       .then((res) => {
         setUserData(res.Data);
