@@ -10,6 +10,7 @@ function Router() {
       <Routes>
         <Route path="/all-accepted-applicants-list" element={<AllAcceptedApplicantsList />} />
         <Route path="/" element={<Login />} />
+        <Route path="/accepted-applicants-list" element={<AcceptedApplicantsList />} />
       </Routes>
     </BrowserRouter>
   );
