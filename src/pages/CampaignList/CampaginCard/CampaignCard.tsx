@@ -50,20 +50,17 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
 export default CampaignCard;
 
 const CampaignItem = styled.article`
-  margin-bottom: 60px;
-  &:not(:nth-child(4n)) {
-    margin-right: 33px;
-  }
+  margin: 30px 50px 0 50px;
 `;
 
 const CampaignImg = styled.img`
   width: 275px;
   height: 290px;
+  border-radius: 5px;
 `;
 
 const CampaignInfo = styled.ul`
   text-decoration: none;
-  /* list-style: ; */
 `;
 
 const Card = styled.li`

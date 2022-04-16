@@ -42,8 +42,9 @@ export default CampaignCardList;
 const SearchItems = styled.ul`
   font-size: 20px;
   display: flex;
+  width: 90%;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
 `;
 
 // typeof Array -> Object shows up
