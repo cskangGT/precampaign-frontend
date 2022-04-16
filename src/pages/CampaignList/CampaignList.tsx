@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { TextField, InputAdornment } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { CampaignCardInfo, QueryInfo } from '../types';
@@ -14,6 +14,7 @@ const CampaignList: React.FC = () => {
   const [searchInputText, setSearchInputText] = useState<string>('');
   // Type 추론이 되지만 우선 공부 목적아로 <> 남겨둠
   const [campaignCardList, setCampaignCardList] = useState<CampaignCardInfo[]>([]);
+
   const [queryData, setQueryData] = useState<QueryInfo>({
     query_for_status: '',
     query_for_sort: '',
@@ -24,24 +25,24 @@ const CampaignList: React.FC = () => {
     setSearchInputText(lowerCase);
   };
 
-  // useEffect(() => {
-  //   fetch('/data/mockData.json')
-  //     .then((res) => res.json())
-  //     .then((res) => setCampaignCardList(res.data));
-  // }, []);
-
   useEffect(() => {
-    console.log('location.search', location.search);
-    console.log(localStorage.getItem('access_token'));
-    fetch(`http://${BASE_URL}/campaigns${location.search}`, {
-      headers: { authorization: token },
-      //TODO: Bloker!!해결할것
-    })
+    fetch('/data/mockData.json')
       .then((res) => res.json())
-      .then((res) => setCampaignCardList(res));
-  }, [location.search]);
-  // console.log(campaignCardList);
-  // setCampaignCardList(res.data);
+      .then((res) => setCampaignCardList(res.data));
+  }, []);
+
+  // useEffect(() => {
+  //   // console.log('location.search', location.search);
+  //   // console.log(localStorage.getItem('access_token'));
+  //   fetch(`http://${BASE_URL}/campaigns${location.search}`, {
+  //     headers: { authorization: token },
+  //     //TODO: Bloker!!해결할것
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => setCampaignCardList(res));
+  // }, [location.search]);
+  // // console.log(campaignCardList);
+  // // setCampaignCardList(res.data);
 
   const changeSection = (sectionParam: string) => {
     if (sectionParam === '') {
