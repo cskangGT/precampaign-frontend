@@ -13,14 +13,15 @@ export default function AcceptedApplicantsList() {
   };
 
   useEffect(() => {
-    fetch('/data/data.json', {
+    fetch('http://172.1.4.173:8080/applicants', {
       headers: {
         Authorization: token,
       },
     })
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.Data);
+        setUserData(res.data);
+        console.log(res);
       });
   }, []);
 
@@ -33,9 +34,18 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {userData.map(({ thumbnail, name, birth, contact, address }) => {
-            return <UserCard thumbnail={thumbnail} name={name} birth={birth} contact={contact} address={address} />;
-          })}
+          {userData &&
+            userData.map(({ thumbnail_url, name, birthdate, contact, address }) => {
+              return (
+                <UserCard
+                  thumbnail_url={thumbnail_url}
+                  name={name}
+                  birthdate={birthdate}
+                  contact={contact}
+                  address={address}
+                />
+              );
+            })}
         </ListContainer>
       </Container>
     </>

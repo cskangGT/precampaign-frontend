@@ -17,9 +17,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    console.log(idValue);
-    console.log(pwValue);
-    fetch('http://10.58.5.111:8081/users/signin', {
+    fetch('http://172.1.4.173:8080/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -32,9 +30,9 @@ export default function Login() {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          navigate('/');
+        if (result.accessToken) {
+          localStorage.setItem('token', result.accessToken);
+          navigate('/accepted-applicants-list');
         } else {
           alert('아이디와 비밀번호를 확인해주세요!');
         }
