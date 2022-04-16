@@ -9,7 +9,7 @@ export default function AcceptedApplicantsList() {
   const token: any = localStorage.getItem('token');
 
   const back = () => {
-    return navigate('/campaign-list');
+    return navigate('/campaigns');
   };
 
   useEffect(() => {
