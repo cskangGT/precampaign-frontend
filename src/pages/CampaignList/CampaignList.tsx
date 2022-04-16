@@ -66,6 +66,10 @@ const CampaignList: React.FC = () => {
     navigate(`?status=${newQuery.query_for_status}&${newQuery.query_for_sort}`);
   };
 
+  const goToAllAcceptants = () => {
+    navigate('/all-accepted-applicants-list');
+  };
+
   return (
     <>
       <Main>
@@ -87,7 +91,7 @@ const CampaignList: React.FC = () => {
             }}
           />
         </SearchBar>
-        <GoToAllAccepted>
+        <GoToAllAccepted onClick={goToAllAcceptants}>
           <h4>수락된 신청자 모두 보러가기</h4>
         </GoToAllAccepted>
         <ProgressBox>
