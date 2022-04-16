@@ -17,9 +17,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    console.log(idValue);
-    console.log(pwValue);
-    fetch('http://10.58.5.111:8081/users/signin', {
+    fetch('http://172.1.7.241:8081/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
@@ -31,10 +29,9 @@ export default function Login() {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          navigate('/');
+        if (result.accessToken) {
+          localStorage.setItem('access_token', result.accessToken);
+          navigate('/campaigns');
         } else {
           alert('아이디와 비밀번호를 확인해주세요!');
         }
@@ -45,7 +42,7 @@ export default function Login() {
     <>
       <Container>
         <LoginContainer>
-          <CompanyName>F & F</CompanyName>
+          <CompanyName>MLB</CompanyName>
           <LoginBox>
             <IdBox>
               <Id>ID</Id>

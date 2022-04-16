@@ -9,7 +9,7 @@ export default function List() {
   const token: any = localStorage.getItem('token');
 
   const back = () => {
-    return navigate('/precampain-list');
+    return navigate('/campaigns');
   };
 
   useEffect(() => {
@@ -17,7 +17,8 @@ export default function List() {
       headers: {
         Authoriization: token,
       },
-    })
+    });
+    fetch('/data/userData.json')
       .then((res) => res.json())
       .then((res) => {
         setUserData(res.Data);
