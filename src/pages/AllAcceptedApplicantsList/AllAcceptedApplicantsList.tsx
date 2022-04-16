@@ -15,7 +15,7 @@ export default function List() {
     fetch('/data/userData.json')
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.Data);
+        setUserData(res.applicants);
       });
   }, []);
 
@@ -36,12 +36,12 @@ export default function List() {
             <KeywordTitle>Keyword</KeywordTitle>
             <CampaignNameTitle>Campaign Name</CampaignNameTitle>
           </TitleBox>
-          {userData.map(({ name, gender, accountName, height, weight, keyword, campaignName }) => {
+          {userData.map(({ name, gender, platform_account, height, weight, keyword, campaignName }) => {
             return (
               <UserList
                 name={name}
                 gender={gender}
-                accountName={accountName}
+                accountName={platform_account}
                 height={height}
                 weight={weight}
                 keyword={keyword}

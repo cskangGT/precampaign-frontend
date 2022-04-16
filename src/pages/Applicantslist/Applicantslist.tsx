@@ -38,7 +38,7 @@ export default function List() {
     fetch('/data/userData.json')
       .then((res) => res.json())
       .then((res) => {
-        setApplicantData(res.Data);
+        setApplicantData(res.applicants);
       });
   }, []);
 
@@ -64,21 +64,37 @@ export default function List() {
             <RateTitle>Rate</RateTitle>
             <EvaluationTitle>Check</EvaluationTitle>
           </TitleBox>
-          {applicantData.map(({ name, platform, thumbnail, gender, accountName, height, weight, keyword, rate }) => {
-            return (
-              <ApplicantCard
-                name={name}
-                platform={platform}
-                thumbnail={thumbnail}
-                gender={gender}
-                accountName={accountName}
-                height={height}
-                weight={weight}
-                keyword={keyword}
-                rate={rate}
-              />
-            );
-          })}
+          {applicantData.map(
+            ({
+              id,
+              name,
+              gender,
+              height,
+              weight,
+              thumbnail,
+              contact,
+              address,
+              platform_account,
+              platform,
+              keyword,
+              rate,
+            }) => {
+              return (
+                <ApplicantCard
+                  key={id}
+                  name={name}
+                  gender={gender}
+                  height={height}
+                  weight={weight}
+                  platform={platform}
+                  thumbnail={thumbnail}
+                  accountName={platform_account}
+                  keyword={keyword}
+                  rate={rate}
+                />
+              );
+            },
+          )}
         </ListContainer>
       </Container>
     </>

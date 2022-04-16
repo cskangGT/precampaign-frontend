@@ -2,32 +2,24 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
-
-interface Applicant {
-  name: string;
-  thumbnail: string;
-  platform: string;
-  gender: string;
-  accountName: string;
-  height: number;
-  weight: number;
-  keyword: string;
-  rate: number;
-}
+import { Applicant } from '../../types';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
 export default function ApplicantCard({
   name,
-  platform,
-  thumbnail,
   gender,
-  accountName,
   height,
   weight,
+  platform,
+  thumbnail,
+  accountName,
   keyword,
   rate,
 }: Applicant) {
   const [modal, setModal] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [ApplicantData, setApplicantData] = useState([]);
+  // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -39,9 +31,10 @@ export default function ApplicantCard({
     })
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.Data);
+        setApplicantData(res.Data);
+        // setApplicantInfoState();
       });
-  });
+  }, []);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -75,18 +68,18 @@ export default function ApplicantCard({
                   <UserInfoBox>
                     <UserInfo>
                       <UserNameBox>Name</UserNameBox>
-                      <UserName>김준영</UserName>
+                      <UserName>{name}</UserName>
                       <UserGenderBox>Gender</UserGenderBox>
-                      <UserGender>남</UserGender>
+                      <UserGender>{gender}</UserGender>
                       <UserHeightBox>Height</UserHeightBox>
-                      <UserHeight>175</UserHeight>
+                      <UserHeight>{height}</UserHeight>
                       <UserWeightBox>Weight</UserWeightBox>
-                      <UserWeight>70</UserWeight>
+                      <UserWeight>{weight}</UserWeight>
                       <UserKeywordBox>Keyword</UserKeywordBox>
-                      <UserKeyword>스트릿</UserKeyword>
+                      <UserKeyword>{keyword}</UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {userData.map(({ thumbnail }) => {
+                  {ApplicantData.map(({ thumbnail }) => {
                     return <ApplicantPics thumbnail={thumbnail} />;
                   })}
                 </ListContainer>
