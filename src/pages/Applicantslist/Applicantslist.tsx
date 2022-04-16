@@ -88,7 +88,7 @@ export default function List() {
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  gotobackground-color: lightgray;
+  background-color: lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,13 +101,13 @@ const Nav = styled.div`
   justify-content: space-around;
   width: 1500px;
   height: 100px;
-  gotobackground-color: yellow;
+  background-color: yellow;
 `;
 
 const GogoToBack = styled.button`
   width: 125px;
   height: 50px;
-  gotobackground-color: lightgray;
+  background-color: lightgray;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -118,7 +118,7 @@ const GogoToBack = styled.button`
 const CampaignTitle = styled.div`
   width: 500px;
   height: 50px;
-  gotobackground-color: lightgray;
+  background-color: lightgray;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -128,7 +128,7 @@ const CampaignTitle = styled.div`
 const GoToResult = styled.div`
   width: 125px;
   height: 50px;
-  gotobackground-color: lightgray;
+  background-color: lightgray;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -140,13 +140,13 @@ const ListContainer = styled.div`
   width: 1500px;
   height: 750px;
   border: 1px solid black;
-  gotobackground-color: green;
+  background-color: green;
 `;
 
 const TitleBox = styled.div`
   display: flex;
   justify-content: space-around;
-  gotobackground-color: skyblue;
+  background-color: skyblue;
 `;
 
 const Title = styled.div`
