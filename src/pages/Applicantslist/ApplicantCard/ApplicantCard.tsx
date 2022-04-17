@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
-import { Applicant } from '../../types';
+import { ApplicantProps } from '../../types';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
 export default function ApplicantCard({
+  id,
   name,
   gender,
   height,
@@ -16,25 +18,31 @@ export default function ApplicantCard({
   accountName,
   keyword,
   rate,
-}: Applicant) {
+  campaignApplicantId,
+  campaignParam,
+  BASE_URL,
+}: ApplicantProps) {
   const [modal, setModal] = useState(false);
   const [ApplicantData, setApplicantData] = useState([]);
+  // const;
+
   // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 
   const toggleModal = () => {
     setModal(!modal);
+
+    fetch(` ${campaignParam}?applicant-id=${campaignApplicantId}`);
   };
 
-  // useEffect(() => {
-  //   fetch('/data/data.json', {
-  //     method: 'GET',
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setApplicantData(res.Data);
-  //       setRateValue(res.data)
-  //     });
-  // }, [rateValue]);
+  useEffect(() => {
+    fetch('/data/data.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setApplicantData(res.Data);
+      });
+  }, []);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -58,7 +66,6 @@ export default function ApplicantCard({
         <Keyword>{keyword}</Keyword>
         <Rate>{rate}</Rate>
         <RateModal>
-          {' '}
           <ModalOpen onClick={toggleModal}>사진확인</ModalOpen>
           {modal && (
             <ModalWindow>

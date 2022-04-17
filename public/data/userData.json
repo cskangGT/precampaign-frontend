@@ -12,6 +12,7 @@
       "platform_account" :  "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 1,
       "rate": 4.5
     },
     {
@@ -26,6 +27,7 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 2,
       "rate": 4.5
     },
     {
@@ -40,6 +42,7 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 3,
       "rate": 4.5
     },
     {
@@ -54,6 +57,7 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 4,
       "rate": 4.5
     },
     {
@@ -69,6 +73,7 @@
       "platform": "insta",
       "accountName": "Keng",
       "keyword":"미니멀",
+      "campaign_applicant_id": 5,
       "rate": 4.5
     },
     {
@@ -83,6 +88,7 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 6,
       "rate": 4.5
     },
     {
@@ -97,6 +103,7 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
+      "campaign_applicant_id": 7,
       "rate": 4.5
     }
   ]

@@ -14,7 +14,8 @@ export default function List() {
   const BASE_URL = 'http://172.1.4.173:8000/campaigns';
   const [applicantData, setApplicantData] = useState([]);
   const [rateValue, setRateValue] = useState(0);
-
+  const campaign_param = params.campaignID;
+  // 어차피 state 값 변하면 reloading 됨.
   const goToBack = () => {
     return navigate('/campaigns');
   };
@@ -25,25 +26,25 @@ export default function List() {
 
   useEffect(() => {
     if (accessToken) {
-      console.log('params', params);
-      fetch(`${BASE_URL}/` + params, {
+      fetch(`${BASE_URL}/${params}`, {
         headers: { authorization: accessToken },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setApplicantData(data);
+          setApplicantData(data.applicants);
         });
     }
   }, []);
 
   // useEffect(() => {
+  //   console.log(applicantId);
   //   fetch('/data/userData.json')
   //     .then((res) => res.json())
   //     .then((res) => {
   //       setApplicantData(res.applicants);
   //     });
-  // }, [rateValue]);
+  // }, []);
 
   return (
     <>
@@ -80,11 +81,13 @@ export default function List() {
               platform_account,
               platform,
               keyword,
+              campaign_applicant_id,
               rate,
             }) => {
               return (
                 <ApplicantCard
                   key={id}
+                  id={id}
                   name={name}
                   gender={gender}
                   height={height}
@@ -94,6 +97,9 @@ export default function List() {
                   accountName={platform_account}
                   keyword={keyword}
                   rate={rate}
+                  campaignApplicantId={campaign_applicant_id}
+                  campaignParam={campaign_param}
+                  BASE_URL={BASE_URL}
                 />
               );
             },

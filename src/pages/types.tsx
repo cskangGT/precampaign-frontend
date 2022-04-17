@@ -19,7 +19,8 @@ export interface ApplicantInfo {
   keword: string;
 }
 
-export interface Applicant {
+export interface ApplicantProps {
+  id: number;
   name: string;
   thumbnail: string;
   platform: string;
@@ -29,6 +30,9 @@ export interface Applicant {
   weight: number;
   keyword: string;
   rate: number;
+  campaignApplicantId: number;
+  campaignParam: number;
+  BASE_URL: string;
 }
 
 export interface ApplicantPicsProps {
