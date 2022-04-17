@@ -35,11 +35,12 @@ export default function AcceptedApplicantsList() {
         </Nav>
         <ListContainer>
           {userData &&
-            userData.map(({ thumbnail_url, name, birthdate, contact, address }) => {
+            userData.map(({ thumbnail_url, name, gender, birthdate, contact, address }) => {
               return (
                 <UserCard
                   thumbnail_url={thumbnail_url}
                   name={name}
+                  gender={gender}
                   birthdate={birthdate}
                   contact={contact}
                   address={address}

@@ -4,18 +4,20 @@ import styled from '@emotion/styled';
 interface User {
   thumbnail_url: string;
   name: string;
+  gender: string;
   birthdate: string;
   contact: string;
   address: string;
 }
 
-export default function UserCard({ thumbnail_url, name, birthdate, contact, address }: User) {
+export default function UserCard({ thumbnail_url, name, gender, birthdate, contact, address }: User) {
   return (
     <>
       <Container>
         <UserImg src={thumbnail_url}></UserImg>
         <UserInfoBox>
           <UserName>{name}</UserName>
+          <UserGender>{gender}</UserGender>
           <UserAddress>{address.slice(0, 2)}</UserAddress>
         </UserInfoBox>
         <UserInfoBox>
@@ -70,9 +72,15 @@ const UserInfo = styled.div`
   border: 1px solid gray;
 `;
 
-const UserName = styled(UserInfo)``;
-
-const UserAddress = styled(UserInfo)``;
+const UserName = styled(UserInfo)`
+  width: 50%;
+`;
+const UserGender = styled(UserInfo)`
+  width: 25%;
+`;
+const UserAddress = styled(UserInfo)`
+  width: 25%;
+`;
 
 const UserBirth = styled(UserInfo)`
   width: 300px;
