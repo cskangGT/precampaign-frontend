@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import UserCard from './UserCard';
 
 export default function AcceptedApplicantsList() {
-  const [acceptedApplicants, setacceptedApplicants] = useState([]);
+  const [acceptedApplicants, setAcceptedApplicants] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
   const token: any = localStorage.getItem('token');
@@ -22,7 +22,7 @@ export default function AcceptedApplicantsList() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        setacceptedApplicants(res.applicants);
+        setAcceptedApplicants(res.applicants);
       });
   }, []);
 
