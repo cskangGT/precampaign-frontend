@@ -10,20 +10,10 @@ interface User {
   height: number;
   weight: number;
   keyword: string;
-  campaignName: string;
+  campaignName: string[];
 }
 
-export default function UserList({
-  name,
-  thumbnail,
-  gender,
-  platform,
-  accountName,
-  height,
-  weight,
-  keyword,
-  campaignName,
-}: User) {
+export default function UserList({ name, thumbnail, gender, platform, height, weight, keyword, campaignName }: User) {
   return (
     <>
       <Container>
@@ -33,11 +23,14 @@ export default function UserList({
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
         <Platform>{platform}</Platform>
-        <AccountName>{accountName}</AccountName>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
         <Keyword>{keyword}</Keyword>
-        <CampaignName>{campaignName}</CampaignName>
+        <CampaignName>
+          {campaignName.map((item) => {
+            return <Campaign>{item}</Campaign>;
+          })}
+        </CampaignName>
       </Container>
     </>
   );
@@ -51,6 +44,8 @@ const Container = styled.div`
   border-radius: 10px;
   margin: 5px 0;
 `;
+
+const Campaign = styled.div``;
 
 const UserCard = styled.div`
   width: 100px;
@@ -73,24 +68,25 @@ const Name = styled(UserCard)`
   width: 10%;
 `;
 const Gender = styled(UserCard)`
-  width: 5%;
+  width: 6%;
 `;
 const Platform = styled(UserCard)`
   width: 10%;
 `;
-const AccountName = styled(UserCard)`
-  width: 10%;
-`;
+
 const Height = styled(UserCard)`
-  width: 5%;
+  width: 7%;
 `;
 const Weight = styled(UserCard)`
-  width: 5%;
+  width: 7%;
 `;
 const Keyword = styled(UserCard)`
-  width: 10%;
+  width: 14%;
 `;
 const CampaignName = styled(UserCard)`
-  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 26%;
   border-right: none;
 `;

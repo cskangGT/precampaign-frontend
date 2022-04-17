@@ -23,7 +23,7 @@ export default function ApplicantCard({
   BASE_URL,
 }: ApplicantProps) {
   const [modal, setModal] = useState(false);
-  const [ApplicantData, setApplicantData] = useState([]);
+  const [applicantData, setApplicantData] = useState([]);
   // const;
 
   // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
@@ -37,15 +37,13 @@ export default function ApplicantCard({
       });
   };
 
-  // useEffect(() => {
-  //   fetch('/data/data.json', {
-  //     method: 'GET',
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setApplicantData(res.Data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch('/data/data.json')
+      .then((res) => res.json())
+      .then((res) => {
+        setApplicantData(res.Data);
+      });
+  }, []);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -91,7 +89,7 @@ export default function ApplicantCard({
                       <UserKeyword>{keyword}</UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {ApplicantData.map((e) => {
+                  {applicantData.map((e) => {
                     return <ApplicantPics thumbnail={e} />;
                   })}
                 </ListContainer>
@@ -127,10 +125,12 @@ export default function ApplicantCard({
 }
 
 const Container = styled.div`
-  background-color: gray;
   height: 150px;
   display: flex;
   justify-content: space-around;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin: 5px 0;
 `;
 
 const UserCard = styled.div`
@@ -138,38 +138,40 @@ const UserCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  margin: 10px 0;
+  border-right: 1px solid lightgray;
 `;
 
 const Thumbnail = styled(UserCard)`
-  width: 20%;
+  width: 18%;
 `;
 const Name = styled(UserCard)`
   width: 10%;
 `;
 const Gender = styled(UserCard)`
-  width: 5%;
+  width: 8%;
 `;
 const AccountName = styled(UserCard)`
-  width: 15%;
+  width: 12%;
 `;
 const Platform = styled(UserCard)`
-  width: 10%;
+  width: 8%;
 `;
 const Height = styled(UserCard)`
-  width: 5%;
+  width: 6%;
 `;
 const Weight = styled(UserCard)`
-  width: 5%;
+  width: 6%;
 `;
 const Keyword = styled(UserCard)`
-  width: 5%;
+  width: 12%;
 `;
 const Rate = styled(UserCard)`
-  width: 10%;
+  width: 8%;
 `;
 const RateModal = styled(UserCard)`
-  width: 15%;
+  width: 12%;
+  border-right: none;
 `;
 
 ///////////////
@@ -177,9 +179,15 @@ const RateModal = styled(UserCard)`
 const ModalOpen = styled.button`
   padding: 10px 20px;
   display: block;
-  margin: 100px auto 0;
+  background-color: lightgray;
   font-size: 18px;
+  border: 1px solid gray;
+  border-radius: 10px;
   cursor: pointer;
+  :hover {
+    background-color: gray;
+    border: 1px solid darkgray;
+  }
 `;
 
 const ModalClose = styled.button`
@@ -188,6 +196,14 @@ const ModalClose = styled.button`
   left: 10px;
   padding: 9px 12px;
   cursor: pointer;
+  border-radius: 10px;
+  background-color: lightgray;
+  border: 1px solid gray;
+  font-size: 16px;
+  :hover {
+    background-color: gray;
+    border: 1px solid darkgray;
+  }
 `;
 
 const ModalWindow = styled.div`
@@ -213,7 +229,7 @@ const ModalContent = styled.div`
   line-height: 1.4;
   background: #f1f1f1;
   padding: 14px 28px;
-  border-radius: 3px;
+  border-radius: 10px;
   width: 90%;
   height: 90%;
   display: flex;
@@ -225,7 +241,6 @@ const UserInfoBox = styled.div`
   margin-top: 30px;
   width: 100%;
   height: 100px;
-  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,7 +249,6 @@ const UserInfoBox = styled.div`
 const UserInfo = styled.div`
   width: 100%;
   height: 75px;
-  background-color: beige;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,13 +257,12 @@ const UserInfo = styled.div`
 const UserBox = styled.div`
   width: 800px;
   height: 50px;
-  /* background-color: skyblue; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 20px;
 `;
 
@@ -276,8 +289,6 @@ const UserKeyword = styled(User)``;
 const ListContainer = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid black;
-  background: gray;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
@@ -290,6 +301,7 @@ const EvaluationStandard = styled.div`
   width: 300px;
   height: 150px;
   border: 1px solid black;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -299,7 +311,6 @@ const EvaluationStandard = styled.div`
 const Evaluation = styled.div`
   width: 80px;
   height: 40px;
-  border: 1px solid black;
   display: flex;
   align-items: center;
 `;
@@ -309,17 +320,20 @@ const Trend = styled(Evaluation)``;
 const Creative = styled(Evaluation)``;
 
 const EvaluationBox = styled.div`
-  width: 290px;
+  width: 275px;
   height: 45px;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid gray;
+  padding-left: 25px;
 `;
 
 const BackgroundBox = styled(EvaluationBox)``;
 const TrendBox = styled(EvaluationBox)``;
-const CreativeBox = styled(EvaluationBox)``;
+const CreativeBox = styled(EvaluationBox)`
+  border-bottom: none;
+`;
 
 const EvaluationBtn = styled.button`
   position: absolute;
@@ -327,18 +341,23 @@ const EvaluationBtn = styled.button`
   right: 75px;
   width: 150px;
   height: 50px;
-  border: 1px solid black;
+  background-color: lightgray;
+  font-size: 18px;
+  border: 1px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  :hover {
+    background-color: gray;
+    border: 1px solid darkgray;
+  }
 `;
 
 const StarRate = styled.div`
   width: 210px;
   height: 40px;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
