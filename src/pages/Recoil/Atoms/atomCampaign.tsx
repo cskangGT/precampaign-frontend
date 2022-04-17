@@ -11,13 +11,13 @@ export const campaignStatusState = atom({
   default: '',
 });
 
-export const applicantInfoState = atom<ApplicantInfo>({
-  key: 'applicantInfoState',
-  default: {
-    name: '강성훈',
-    gender: 'M',
-    height: '188',
-    weight: '80',
-    keword: '미니멀',
-  },
-});
+// export const applicantInfoState = atom<ApplicantInfo>({
+//   key: 'applicantInfoState',
+//   default: {
+//     name: '강성훈',
+//     gender: 'M',
+//     height: '188',
+//     weight: '80',
+//     keword: '미니멀',
+//   },
+// });

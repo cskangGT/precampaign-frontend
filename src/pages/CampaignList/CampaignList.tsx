@@ -104,6 +104,7 @@ const CampaignList: React.FC = () => {
             <ShowTermination onClick={() => changeSection('termination')}>종료</ShowTermination>
           </ProgressBox>
           <SortSelectBox onChange={updateSort}>
+            <option value="sort=">정렬하기</option>
             <option value="sort_order=desc&sort_by=createdAt">캠페인 생성순</option>
             <option value="sort_order=desc&sort_by=count">신청자 순</option>
           </SortSelectBox>

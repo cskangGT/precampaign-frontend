@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
 import { Applicant } from '../../types';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
+// import { useRecoilValue, useSetRecoilState } from 'recoil';
+// import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
 export default function ApplicantCard({
   name,
@@ -25,16 +25,16 @@ export default function ApplicantCard({
     setModal(!modal);
   };
 
-  useEffect(() => {
-    fetch('/data/data.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setApplicantData(res.Data);
-        // setApplicantInfoState();
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/data/data.json', {
+  //     method: 'GET',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.Data);
+  //       setRateValue(res.data)
+  //     });
+  // }, [rateValue]);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -47,7 +47,7 @@ export default function ApplicantCard({
     <>
       <Container>
         <Thumbnail>
-          <img src="https://cdn.pixabay.com/photo/2022/04/03/13/54/woman-7109043_1280.jpg" width="140px" />
+          <img src={thumbnail} width="140px" />
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
@@ -79,8 +79,8 @@ export default function ApplicantCard({
                       <UserKeyword>{keyword}</UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {ApplicantData.map(({ thumbnail }) => {
-                    return <ApplicantPics thumbnail={thumbnail} />;
+                  {ApplicantData.map((e) => {
+                    return <ApplicantPics thumbnail={e} />;
                   })}
                 </ListContainer>
                 <ModalClose onClick={toggleModal}>닫기</ModalClose>
