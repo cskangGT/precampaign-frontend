@@ -12,7 +12,8 @@
       "platform_account" :  "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 원피스 캠페인", "여름 바지 캠페인", "가을 모자 캠페인"]
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 이너 캠페인", "여름 바지 캠페인", "겨울 코트 캠페인"]
     },
     {
       "id": 4,
@@ -54,7 +57,8 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
     },
     {
       "id": 5,
@@ -69,7 +73,8 @@
       "platform": "insta",
       "accountName": "Keng",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
     },
     {
       "id": 6,
@@ -83,7 +88,8 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
     },
     {
       "id": 7,
@@ -97,7 +103,8 @@
       "platform_account" : "strong_krh",
       "platform": "insta",
       "keyword":"미니멀",
-      "rate": 4.5
+      "rate": 4.5,
+      "campaignName": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
     }
   ]
 }
