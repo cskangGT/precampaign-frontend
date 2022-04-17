@@ -42,7 +42,6 @@ export default function StarRating() {
             />
           );
         })}
-        test {currentValue}
       </div>
     </div>
   );
