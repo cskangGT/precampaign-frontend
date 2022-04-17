@@ -43,10 +43,11 @@ export default function List() {
             <KeywordTitle>Keyword</KeywordTitle>
             <CampaignNameTitle>Campaign Name</CampaignNameTitle>
           </TitleBox>
-          {userData.map(({ name, gender, platform, accountName, height, weight, keyword, campaignName }) => {
+          {userData.map(({ name, thumbnail, gender, platform, accountName, height, weight, keyword, campaignName }) => {
             return (
               <UserList
                 name={name}
+                thumbnail={thumbnail}
                 gender={gender}
                 platform={platform}
                 accountName={accountName}
@@ -66,7 +67,6 @@ export default function List() {
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,31 +77,40 @@ const Container = styled.div`
 const Nav = styled.div`
   width: 1500px;
   height: 100px;
-  background-color: yellow;
 `;
 
 const GoBack = styled.button`
   width: 125px;
   height: 50px;
   background-color: lightgray;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid gray;
+  font-size: 16px;
   cursor: pointer;
+  :hover {
+    background-color: gray;
+    border: 1px solid darkgrey;
+  }
 `;
 
 const ListContainer = styled.div`
   width: 1500px;
   height: 750px;
-  border: 1px solid black;
-  background-color: green;
+  border-radius: 10px;
+  border-bottom: 1px solid lightgray;
+  overflow: auto;
 `;
 
 const TitleBox = styled.div`
   display: flex;
   justify-content: space-around;
-  background-color: skyblue;
+  background-color: lightgray;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
 `;
 
 const Title = styled.div`
@@ -111,6 +120,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  border-right: 1px solid gray;
 `;
 
 const ThumbnailTitle = styled(Title)`
@@ -147,4 +157,5 @@ const KeywordTitle = styled(Title)`
 
 const CampaignNameTitle = styled(Title)`
   width: 25%;
+  border-right: none;
 `;
