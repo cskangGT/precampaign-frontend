@@ -99,7 +99,8 @@ const GoBack = styled.button`
 const ListContainer = styled.div`
   width: 1500px;
   height: 750px;
-  border-radius: 5px;
+  border-radius: 10px;
+  border-bottom: 1px solid lightgray;
   overflow: auto;
 `;
 
