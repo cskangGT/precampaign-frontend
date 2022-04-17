@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import UserCard from './UserCard';
 
 export default function AcceptedApplicantsList() {
-  const [userData, setUserData] = useState([]);
+  const [acceptedApplicants, setacceptedApplicants] = useState([]);
+  const params = useParams();
   const navigate = useNavigate();
   const token: any = localStorage.getItem('token');
-
+  const BASE_URL = 'http://172.1.7.241:8081/campaigns/accepted-applicants-list';
   const back = () => {
-    return navigate('/campaigns');
+    return navigate(-1);
   };
 
   useEffect(() => {
-    fetch('http://172.1.4.173:8080/applicants', {
+    fetch(`${BASE_URL}/${params.campaignId}`, {
       headers: {
         Authorization: token,
       },
     })
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.data);
         console.log(res);
+        setacceptedApplicants(res.applicants);
       });
   }, []);
 
@@ -34,8 +35,8 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {userData &&
-            userData.map(({ thumbnail_url, name, birthdate, contact, address }) => {
+          {acceptedApplicants &&
+            acceptedApplicants.map(({ thumbnail_url, name, birthdate, contact, address }) => {
               return (
                 <UserCard
                   thumbnail_url={thumbnail_url}

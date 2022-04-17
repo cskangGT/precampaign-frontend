@@ -11,29 +11,29 @@ export default function List() {
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const accessToken = localStorage.getItem('access_token');
-  // const BASE_URL = 'http://172.1.4.173:8000/campaigns';
-  const BASE_URL = 'data/userData.json';
+  const BASE_URL = 'http://172.1.7.241:8081/campaigns';
+  // const BASE_URL = 'data/userData.json';
   const [applicantData, setApplicantData] = useState([]);
   const [rateValue, setRateValue] = useState(0);
   const campaign_param = params.campaignId;
   // 어차피 state 값 변하면 reloading 됨.
   const goToBack = () => {
-    return navigate('/campaigns');
+    return navigate(-1);
   };
 
   const goToAcceptedPplList = () => {
-    return navigate('/accepted-applicants-list');
+    return navigate(`/campaigns/accepted-applicants-list/${params.campaignId}`);
   };
 
   useEffect(() => {
     if (accessToken) {
-      fetch(`${BASE_URL}/${params}`, {
+      fetch(`${BASE_URL}/${params.campaignId}`, {
         headers: { authorization: accessToken },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          console.log(campaign_param);
+          // console.log(campaign_param);
           setApplicantData(data);
         });
     }
@@ -78,8 +78,6 @@ export default function List() {
               height,
               weight,
               thumbnail,
-              contact,
-              address,
               platform_account,
               platform,
               keyword,

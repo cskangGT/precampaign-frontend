@@ -24,33 +24,38 @@ export default function ApplicantCard({
 }: ApplicantProps) {
   const [modal, setModal] = useState(false);
   const [applicantData, setApplicantData] = useState([]);
+  const token: any = localStorage.getItem('token');
   // const;
 
   // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 
   const toggleModal = () => {
     setModal(!modal);
-    fetch(`${BASE_URL}/rate/${campaignParam}?applicant-id=${id}`)
+    fetch(`${BASE_URL}/rate/${campaignParam}?applicant-id=${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    })
       .then((res) => res.json())
       .then((res) => {
         setApplicantData(res.image);
       });
   };
 
-  useEffect(() => {
-    fetch('/data/data.json')
-      .then((res) => res.json())
-      .then((res) => {
-        setApplicantData(res.Data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/data/data.json')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.Data);
+  //     });
+  // }, []);
 
-  //   const sendRate = () => {
-  //     fetch('', {
-  //       method: 'POST',
-  //       body: JSON.stringify({}),
-  //     }).then((res) => res.json);
-  //   };
+  // const sendRate = () => {
+  //   fetch('', {
+  //     method: 'POST',
+  //     body: JSON.stringify({}),
+  //   }).then((res) => res.json);
+  // };
 
   //TODO: campaignApplicantId 보내주기
 

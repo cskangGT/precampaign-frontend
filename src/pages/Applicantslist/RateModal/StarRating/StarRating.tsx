@@ -10,7 +10,7 @@ export default function StarRating() {
   const stars = Array(5).fill(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
-  const handleClick = (value: any) => {
+  const handleClick = (value: number) => {
     setCurrentValue(value);
   };
 
@@ -43,6 +43,7 @@ export default function StarRating() {
           );
         })}
       </div>
+      test: {currentValue}
     </div>
   );
 }

@@ -15,7 +15,7 @@ function Router() {
           <Route path="/" element={<Login />} />
           <Route path="/applicantslist" element={<Applicantslist />} />
           <Route path="/campaigns/:campaignId" element={<Applicantslist />} />
-          <Route path="/accepted-applicants-list" element={<AcceptedApplicantsList />} />
+          <Route path="/campaigns/accepted-applicants-list/:campaignId" element={<AcceptedApplicantsList />} />
           <Route path="/all-accepted-applicants-list" element={<AllAcceptedApplicantsList />} />
           <Route path="/campaigns" element={<CampaignList />} />
         </Routes>
