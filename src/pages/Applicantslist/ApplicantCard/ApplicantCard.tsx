@@ -101,7 +101,7 @@ export default function ApplicantCard({
                       <UserKeywordBox>Keyword</UserKeywordBox>
                       <UserKeyword>
                         {keyword.map((item) => {
-                          return <Keywords>{item}/</Keywords>;
+                          return <Keywords>{item} </Keywords>;
                         })}
                       </UserKeyword>
                     </UserInfo>
@@ -206,7 +206,7 @@ const ModalOpen = styled.button`
   padding: 10px 20px;
   display: block;
   background-color: lightgray;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid gray;
   border-radius: 10px;
   cursor: pointer;
@@ -312,7 +312,7 @@ const UserHeight = styled(User)``;
 const UserWeight = styled(User)``;
 const UserKeyword = styled(User)`
   padding-left: 10px;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   justify-content: space-evenly;
 `;
