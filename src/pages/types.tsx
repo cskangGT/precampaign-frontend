@@ -23,12 +23,12 @@ export interface ApplicantProps {
   id: number;
   name: string;
   thumbnail: string;
-  platform: string;
+  platform: string[];
   gender: string;
   accountName: string;
   height: number;
   weight: number;
-  keyword: string;
+  keyword: string[];
   rate: number;
   campaignApplicantId: number;
   campaignParam: string | undefined;
