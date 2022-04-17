@@ -31,7 +31,7 @@ export interface ApplicantProps {
   keyword: string;
   rate: number;
   campaignApplicantId: number;
-  campaignParam: number;
+  campaignParam: string | undefined;
   BASE_URL: string;
 }
 

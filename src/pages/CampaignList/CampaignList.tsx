@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CampaignCardList from './CampaignCardList/CampaignCardList';
 
 const CampaignList: React.FC = () => {
-  const BASE_URL = '172.1.7.241:8081';
+  const BASE_URL = '172.1.4.173:8000';
   const token = localStorage.getItem('access_token');
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,24 +25,24 @@ const CampaignList: React.FC = () => {
     setSearchInputText(lowerCase);
   };
 
-  useEffect(() => {
-    fetch('/data/mockData.json')
-      .then((res) => res.json())
-      .then((res) => setCampaignCardList(res.data));
-  }, []);
-
   // useEffect(() => {
-  //   // console.log('location.search', location.search);
-  //   // console.log(localStorage.getItem('access_token'));
-  //   fetch(`http://${BASE_URL}/campaigns${location.search}`, {
-  //     headers: { authorization: token },
-  //     //TODO: Bloker!!해결할것
-  //   })
+  //   fetch('/data/mockData.json')
   //     .then((res) => res.json())
-  //     .then((res) => setCampaignCardList(res));
-  // }, [location.search]);
-  // // console.log(campaignCardList);
-  // // setCampaignCardList(res.data);
+  //     .then((res) => setCampaignCardList(res.data));
+  // }, []);
+
+  useEffect(() => {
+    // console.log('location.search', location.search);
+    // console.log(localStorage.getItem('access_token'));
+    fetch(`http://${BASE_URL}/campaigns${location.search}`, {
+      headers: { authorization: token },
+      //TODO: Bloker!!해결할것
+    })
+      .then((res) => res.json())
+      .then((res) => setCampaignCardList(res));
+  }, [location.search]);
+  // console.log(campaignCardList);
+  // setCampaignCardList(res.data);
 
   const changeSection = (sectionParam: string) => {
     if (sectionParam === '') {

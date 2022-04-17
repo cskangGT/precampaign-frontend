@@ -30,19 +30,22 @@ export default function ApplicantCard({
 
   const toggleModal = () => {
     setModal(!modal);
-
-    fetch(` ${campaignParam}?applicant-id=${campaignApplicantId}`);
-  };
-
-  useEffect(() => {
-    fetch('/data/data.json', {
-      method: 'GET',
-    })
+    fetch(`${BASE_URL}/rate/${campaignParam}?applicant-id=${id}`)
       .then((res) => res.json())
       .then((res) => {
-        setApplicantData(res.Data);
+        setApplicantData(res.image);
       });
-  }, []);
+  };
+
+  // useEffect(() => {
+  //   fetch('/data/data.json', {
+  //     method: 'GET',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.Data);
+  //     });
+  // }, []);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -50,6 +53,8 @@ export default function ApplicantCard({
   //       body: JSON.stringify({}),
   //     }).then((res) => res.json);
   //   };
+
+  //TODO: campaignApplicantId 보내주기
 
   return (
     <>
