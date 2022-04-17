@@ -36,27 +36,29 @@ export default function List() {
             <ThumbnailTitle>Thumbnail</ThumbnailTitle>
             <NameTitle>Name</NameTitle>
             <GenderTitle>Gender</GenderTitle>
-            <PlatformTitle>Platform</PlatformTitle>
+            <PlatformTitle>Platforms</PlatformTitle>
             <HeightTitle>Height</HeightTitle>
             <WeightTitle>Weight</WeightTitle>
             <KeywordTitle>Keyword</KeywordTitle>
-            <CampaignNameTitle>Campaign Name</CampaignNameTitle>
+            <AcceptedCampaignsTitle>Accepted Campaigns</AcceptedCampaignsTitle>
           </TitleBox>
-          {userData.map(({ name, thumbnail, gender, platform, accountName, height, weight, keyword, campaignName }) => {
-            return (
-              <UserList
-                name={name}
-                thumbnail={thumbnail}
-                gender={gender}
-                platform={platform}
-                accountName={accountName}
-                height={height}
-                weight={weight}
-                keyword={keyword}
-                campaignName={campaignName}
-              />
-            );
-          })}
+          {userData.map(
+            ({ name, thumbnail, gender, platform, accountName, height, weight, keyword, acceptedCampaigns }) => {
+              return (
+                <UserList
+                  name={name}
+                  thumbnail={thumbnail}
+                  gender={gender}
+                  platform={platform}
+                  accountName={accountName}
+                  height={height}
+                  weight={weight}
+                  keyword={keyword}
+                  acceptedCampaigns={acceptedCampaigns}
+                />
+              );
+            },
+          )}
         </ListContainer>
       </Container>
     </>
@@ -150,7 +152,7 @@ const KeywordTitle = styled(Title)`
   width: 14%;
 `;
 
-const CampaignNameTitle = styled(Title)`
+const AcceptedCampaignsTitle = styled(Title)`
   width: 26%;
   border-right: none;
 `;
