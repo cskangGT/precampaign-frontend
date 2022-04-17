@@ -67,11 +67,19 @@ export default function ApplicantCard({
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
-        <Platform>{platform}</Platform>
+        <Platform>
+          {platform.map((item) => {
+            return <Platforms>{item}</Platforms>;
+          })}
+        </Platform>
         <AccountName>{accountName}</AccountName>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
-        <Keyword>{keyword}</Keyword>
+        <Keyword>
+          {keyword.map((item) => {
+            return <Keywords>{item}</Keywords>;
+          })}
+        </Keyword>
         <Rate>{rate}</Rate>
         <RateModal>
           <ModalOpen onClick={toggleModal}>사진확인</ModalOpen>
@@ -91,7 +99,11 @@ export default function ApplicantCard({
                       <UserWeightBox>Weight</UserWeightBox>
                       <UserWeight>{weight}</UserWeight>
                       <UserKeywordBox>Keyword</UserKeywordBox>
-                      <UserKeyword>{keyword}</UserKeyword>
+                      <UserKeyword>
+                        {keyword.map((item) => {
+                          return <Keywords>{item}/</Keywords>;
+                        })}
+                      </UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
                   {applicantData.map((e) => {
@@ -147,6 +159,9 @@ const UserCard = styled.div`
   border-right: 1px solid lightgray;
 `;
 
+const Platforms = styled.div``;
+const Keywords = styled.div``;
+
 const Thumbnail = styled(UserCard)`
   width: 18%;
 `;
@@ -160,6 +175,9 @@ const AccountName = styled(UserCard)`
   width: 12%;
 `;
 const Platform = styled(UserCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 8%;
 `;
 const Height = styled(UserCard)`
@@ -169,6 +187,9 @@ const Weight = styled(UserCard)`
   width: 6%;
 `;
 const Keyword = styled(UserCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 12%;
 `;
 const Rate = styled(UserCard)`
@@ -289,7 +310,12 @@ const UserName = styled(User)``;
 const UserGender = styled(User)``;
 const UserHeight = styled(User)``;
 const UserWeight = styled(User)``;
-const UserKeyword = styled(User)``;
+const UserKeyword = styled(User)`
+  padding-left: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 const ListContainer = styled.div`
   width: 100%;

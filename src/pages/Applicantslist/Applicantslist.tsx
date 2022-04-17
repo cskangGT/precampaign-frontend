@@ -25,28 +25,27 @@ export default function List() {
     return navigate(`/campaigns/accepted-applicants-list/${params.campaignId}`);
   };
 
-  useEffect(() => {
-    if (accessToken) {
-      fetch(`${BASE_URL}/${params.campaignId}`, {
-        headers: { authorization: accessToken },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          // console.log(campaign_param);
-          setApplicantData(data);
-        });
-    }
-  }, []);
-
   // useEffect(() => {
-  //   console.log(applicantId);
-  //   fetch('/data/userData.json')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setApplicantData(res.applicants);
-  //     });
+  //   if (accessToken) {
+  //     fetch(`${BASE_URL}/${params.campaignId}`, {
+  //       headers: { authorization: accessToken },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         // console.log(campaign_param);
+  //         setApplicantData(data);
+  //       });
+  //   }
   // }, []);
+
+  useEffect(() => {
+    fetch('/data/userData.json')
+      .then((res) => res.json())
+      .then((res) => {
+        setApplicantData(res.applicants);
+      });
+  }, []);
 
   return (
     <>
