@@ -20,14 +20,12 @@ export default function UserCard({ thumbnail_url, name, birthdate, contact, addr
         </UserInfoBox>
         <UserInfoBox>
           <UserBirth>
-            {birthdate.slice(0, 4)}년 {birthdate.slice(5, 7)}월 {birthdate.slice(8, 10)}일
+            {birthdate.slice(0, 4)}년 {birthdate.slice(4, 6)}월 {birthdate.slice(6, 8)}일
           </UserBirth>
         </UserInfoBox>
         <UserInfoBox>
           <UserContact>
-            {contact.slice(0, 3)}
-            {contact.slice(4, 8)}
-            {contact.slice(9, 12)}
+            {contact.slice(0, 3)}.{contact.slice(3, 7)}.{contact.slice(7, 11)}
           </UserContact>
         </UserInfoBox>
       </Container>
@@ -36,26 +34,29 @@ export default function UserCard({ thumbnail_url, name, birthdate, contact, addr
 }
 
 const Container = styled.div`
-  width: 275px;
-  height: 450px;
-  background-color: skyblue;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 25px 50px;
+  transition: all 0.2s;
+  :hover {
+    padding: 15px 0;
+  }
 `;
 
 const UserImg = styled.img`
   width: 300px;
   border: 1px solid gray;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
 `;
 
 const UserInfoBox = styled.div`
   width: 300px;
   height: 40px;
-  background-color: blue;
+  border-radius: 10px;
   display: flex;
 `;
 
