@@ -73,7 +73,10 @@ const CampaignList: React.FC = () => {
   return (
     <>
       <Main>
-        <Header>MLB Pre-Campaigns</Header>
+        <Header>
+          <HeaderBrand>MLB</HeaderBrand>
+          Pre-Campaigns
+        </Header>
         <SearchBar>
           <TextField
             id="outlined-basic"
@@ -92,17 +95,20 @@ const CampaignList: React.FC = () => {
           />
         </SearchBar>
         <GoToAllAccepted onClick={goToAllAcceptants}>
-          <h4>수락된 신청자 모두 보러가기</h4>
+          <h4>수락된 신청자 보기</h4>
         </GoToAllAccepted>
-        <ProgressBox>
-          <ShowAll onClick={() => changeSection('')}>전체보기</ShowAll>
-          <ShowProgess onClick={() => changeSection('ongoing')}>진행중</ShowProgess>
-          <ShowTermination onClick={() => changeSection('termination')}>종료</ShowTermination>
+        <ProgressContainer>
+          <ProgressBox>
+            <ShowAll onClick={() => changeSection('')}>전체보기</ShowAll>
+            <ShowProgess onClick={() => changeSection('ongoing')}>진행중</ShowProgess>
+            <ShowTermination onClick={() => changeSection('termination')}>종료</ShowTermination>
+          </ProgressBox>
           <SortSelectBox onChange={updateSort}>
+            <option value="sort=">정렬하기</option>
             <option value="sort_order=desc&sort_by=createdAt">캠페인 생성순</option>
             <option value="sort_order=desc&sort_by=count">신청자 순</option>
           </SortSelectBox>
-        </ProgressBox>
+        </ProgressContainer>
         <CampaignCardList searchInputText={searchInputText} campaignCardList={campaignCardList} />
       </Main>
     </>
@@ -120,13 +126,20 @@ const Main = styled.div`
   align-items: center;
   flex-direction: column;
   row-gap: 30px;
-  box-sizing: border-box;
 `;
 
 const Header = styled.h1`
+  text-align: center;
   margin: 10px;
   font-size: 40px;
   color: rgb(1, 1, 59);
+  margin-top: 40px;
+`;
+
+const HeaderBrand = styled.h1`
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 15px;
 `;
 
 const SearchBar = styled.div`
@@ -135,77 +148,71 @@ const SearchBar = styled.div`
 
 const GoToAllAccepted = styled.button`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
   position: absolute;
   top: 70px;
   right: 50px;
-  width: 180px;
-  height: 50px;
+  width: 125px;
+  height: 40px;
   margin: 0;
-  padding-left: 12px;
-  background-color: pink;
+  background-color: #364f8c;
   box-sizing: border-box;
+  border: none;
+  color: white;
   cursor: pointer;
 `;
+
 ////////////
 
 ////////////////////////////////
 
+const ProgressContainer = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ProgressBox = styled.div`
-  box-sizing: border-box;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  width: 1300px;
+  width: 90%;
   margin: 0 auto;
+  margin-left: 22%;
 `;
 
-const ShowAll = styled.li`
+const ShowBox = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100px;
   height: 50px;
-  background-color: pink;
-  border: 1px soild black;
-  border-radius: 50%;
+  background-color: #364f8c;
+  color: white;
+  border-radius: 5px;
   list-style: none;
   cursor: pointer;
+  margin-right: 15%;
 `;
 
-const ShowProgess = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 50px;
-  background-color: pink;
-  border: 2px soild black;
-  border-radius: 50%;
-  list-style: none;
-  cursor: pointer;
-`;
+const ShowAll = styled(ShowBox)``;
 
-const ShowTermination = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 50px;
-  background-color: pink;
-  border: 1px soild black;
-  border-radius: 50%;
-  list-style: none;
-  cursor: pointer;
-`;
+const ShowProgess = styled(ShowBox)``;
+
+const ShowTermination = styled(ShowBox)``;
 
 const SortSelectBox = styled.select`
   width: 130px;
   height: 40px;
-  margin-left: 100px;
-  padding: 0 10px;
+  text-align: center;
+  border-radius: 5px;
   border-color: #d9dbe1;
   background: 0 0;
   font-size: 14px;
+  margin-right: 60px;
 `;
 
 ///////////////

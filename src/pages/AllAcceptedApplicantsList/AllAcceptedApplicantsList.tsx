@@ -6,16 +6,22 @@ import UserList from './UserList';
 export default function List() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState([]);
+  const token: any = localStorage.getItem('token');
 
   const back = () => {
-    return navigate('/precampain-list');
+    return navigate('/campaigns');
   };
 
   useEffect(() => {
+    fetch('/data/userData.json', {
+      headers: {
+        Authoriization: token,
+      },
+    });
     fetch('/data/userData.json')
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.data);
+        setUserData(res.applicants);
       });
   }, []);
 
@@ -30,18 +36,20 @@ export default function List() {
             <ThumbnailTitle>Thumbnail</ThumbnailTitle>
             <NameTitle>Name</NameTitle>
             <GenderTitle>Gender</GenderTitle>
+            <PlatformTitle>Platform</PlatformTitle>
             <AccountNameTitle>Account Name</AccountNameTitle>
             <HeightTitle>Height</HeightTitle>
             <WeightTitle>Weight</WeightTitle>
             <KeywordTitle>Keyword</KeywordTitle>
             <CampaignNameTitle>Campaign Name</CampaignNameTitle>
           </TitleBox>
-          {userData.map(({ name, thumbnail, gender, accountName, height, weight, keyword, campaignName }) => {
+          {userData.map(({ name, thumbnail, gender, platform, accountName, height, weight, keyword, campaignName }) => {
             return (
               <UserList
                 name={name}
                 thumbnail={thumbnail}
                 gender={gender}
+                platform={platform}
                 accountName={accountName}
                 height={height}
                 weight={weight}
@@ -126,8 +134,12 @@ const GenderTitle = styled(Title)`
   width: 5%;
 `;
 
+const PlatformTitle = styled(Title)`
+  width: 10%;
+`;
+
 const AccountNameTitle = styled(Title)`
-  width: 15%;
+  width: 10%;
 `;
 
 const HeightTitle = styled(Title)`
@@ -139,7 +151,7 @@ const WeightTitle = styled(Title)`
 `;
 
 const KeywordTitle = styled(Title)`
-  width: 15%;
+  width: 10%;
 `;
 
 const CampaignNameTitle = styled(Title)`

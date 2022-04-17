@@ -10,10 +10,8 @@ export default function StarRating() {
   const stars = Array(5).fill(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
-
   const handleClick = (value: any) => {
     setCurrentValue(value);
-    console.log(currentValue);
   };
 
   const handleMouseOver = (value: any) => {
@@ -25,6 +23,8 @@ export default function StarRating() {
     setHoverValue(undefined);
     // console.log(hoverValue);
   };
+
+  //TODO: 여기다가 star value post 하고 그리고 어떻게 update 할지 useEffecgt관려해서 진목님꺼 봐보기
 
   return (
     <div style={styles.container}>

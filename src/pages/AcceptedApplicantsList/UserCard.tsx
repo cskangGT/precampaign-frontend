@@ -2,30 +2,32 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 interface User {
-  thumbnail: string;
+  thumbnail_url: string;
   name: string;
-  birth: string;
+  birthdate: string;
   contact: string;
   address: string;
 }
 
-export default function UserCard({ thumbnail, name, birth, contact, address }: User) {
+export default function UserCard({ thumbnail_url, name, birthdate, contact, address }: User) {
   return (
     <>
       <Container>
-        <UserImg src={thumbnail}></UserImg>
+        <UserImg src={thumbnail_url}></UserImg>
         <UserInfoBox>
           <UserName>{name}</UserName>
           <UserAddress>{address.slice(0, 2)}</UserAddress>
         </UserInfoBox>
         <UserInfoBox>
           <UserBirth>
-            {birth.slice(0, 4)}년 {birth.slice(4, 6)}월 {birth.slice(6, 8)}일
+            {birthdate.slice(0, 4)}년 {birthdate.slice(5, 7)}월 {birthdate.slice(8, 10)}일
           </UserBirth>
         </UserInfoBox>
         <UserInfoBox>
           <UserContact>
-            {contact.slice(0, 3)}.{contact.slice(3, 7)}.{contact.slice(7, 11)}
+            {contact.slice(0, 3)}
+            {contact.slice(4, 8)}
+            {contact.slice(9, 12)}
           </UserContact>
         </UserInfoBox>
       </Container>

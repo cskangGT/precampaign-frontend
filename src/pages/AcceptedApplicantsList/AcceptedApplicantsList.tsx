@@ -6,21 +6,27 @@ import UserCard from './UserCard';
 export default function AcceptedApplicantsList() {
   const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
+  const token: any = localStorage.getItem('token');
 
   const back = () => {
-    return navigate('/precampaign-list');
+    return navigate('/campaigns');
   };
 
   useEffect(() => {
-    fetch('/data/data.json', {
-      method: 'GET',
+    fetch('http://172.1.4.173:8080/applicants', {
+      headers: {
+        Authorization: token,
+      },
     })
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.Data);
+        setUserData(res.data);
+        console.log(res);
       });
   }, []);
 
+  // login -> token -> accedss_token -> localStorage.getItem
+  // Authorization: localStorage.getItem(access_token) -> app
   return (
     <>
       <Container>
@@ -28,9 +34,18 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {userData.map(({ thumbnail, name, birth, contact, address }) => {
-            return <UserCard thumbnail={thumbnail} name={name} birth={birth} contact={contact} address={address} />;
-          })}
+          {userData &&
+            userData.map(({ thumbnail_url, name, birthdate, contact, address }) => {
+              return (
+                <UserCard
+                  thumbnail_url={thumbnail_url}
+                  name={name}
+                  birthdate={birthdate}
+                  contact={contact}
+                  address={address}
+                />
+              );
+            })}
         </ListContainer>
       </Container>
     </>
@@ -50,8 +65,10 @@ const Container = styled.div`
 
 const Nav = styled.div`
   width: 1500px;
-  height: 100px;
+  height: 75px;
   background-color: yellow;
+  display: flex;
+  align-items: center;
 `;
 
 const GoBack = styled.button`
@@ -72,4 +89,5 @@ const ListContainer = styled.div`
   background-color: green;
   display: flex;
   flex-wrap: wrap;
+  overflow: auto;
 `;

@@ -5,6 +5,7 @@ interface User {
   name: string;
   thumbnail: string;
   gender: string;
+  platform: string;
   accountName: string;
   height: number;
   weight: number;
@@ -16,6 +17,7 @@ export default function UserList({
   name,
   thumbnail,
   gender,
+  platform,
   accountName,
   height,
   weight,
@@ -30,6 +32,7 @@ export default function UserList({
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
+        <Platform>{platform}</Platform>
         <AccountName>{accountName}</AccountName>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
@@ -72,8 +75,11 @@ const Name = styled(UserCard)`
 const Gender = styled(UserCard)`
   width: 5%;
 `;
+const Platform = styled(UserCard)`
+  width: 10%;
+`;
 const AccountName = styled(UserCard)`
-  width: 15%;
+  width: 10%;
 `;
 const Height = styled(UserCard)`
   width: 5%;
@@ -82,7 +88,7 @@ const Weight = styled(UserCard)`
   width: 5%;
 `;
 const Keyword = styled(UserCard)`
-  width: 15%;
+  width: 10%;
 `;
 const CampaignName = styled(UserCard)`
   width: 25%;

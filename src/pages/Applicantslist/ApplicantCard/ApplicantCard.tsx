@@ -2,46 +2,39 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
-
-interface Applicant {
-  name: string;
-  thumbnail: string;
-  platform: string;
-  gender: string;
-  accountName: string;
-  height: number;
-  weight: number;
-  keyword: string;
-  rate: number;
-}
+import { Applicant } from '../../types';
+// import { useRecoilValue, useSetRecoilState } from 'recoil';
+// import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
 export default function ApplicantCard({
   name,
-  platform,
-  thumbnail,
   gender,
-  accountName,
   height,
   weight,
+  platform,
+  thumbnail,
+  accountName,
   keyword,
   rate,
 }: Applicant) {
   const [modal, setModal] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [ApplicantData, setApplicantData] = useState([]);
+  // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  useEffect(() => {
-    fetch('/data/data.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setUserData(res.Data);
-      });
-  });
+  // useEffect(() => {
+  //   fetch('/data/data.json', {
+  //     method: 'GET',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.Data);
+  //       setRateValue(res.data)
+  //     });
+  // }, [rateValue]);
 
   //   const sendRate = () => {
   //     fetch('', {
@@ -54,7 +47,7 @@ export default function ApplicantCard({
     <>
       <Container>
         <Thumbnail>
-          <img src="https://cdn.pixabay.com/photo/2022/04/03/13/54/woman-7109043_1280.jpg" width="140px" />
+          <img src={thumbnail} width="140px" />
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
@@ -75,19 +68,19 @@ export default function ApplicantCard({
                   <UserInfoBox>
                     <UserInfo>
                       <UserNameBox>Name</UserNameBox>
-                      <UserName>김준영</UserName>
+                      <UserName>{name}</UserName>
                       <UserGenderBox>Gender</UserGenderBox>
-                      <UserGender>남</UserGender>
+                      <UserGender>{gender}</UserGender>
                       <UserHeightBox>Height</UserHeightBox>
-                      <UserHeight>175</UserHeight>
+                      <UserHeight>{height}</UserHeight>
                       <UserWeightBox>Weight</UserWeightBox>
-                      <UserWeight>70</UserWeight>
+                      <UserWeight>{weight}</UserWeight>
                       <UserKeywordBox>Keyword</UserKeywordBox>
-                      <UserKeyword>스트릿</UserKeyword>
+                      <UserKeyword>{keyword}</UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {userData.map(({ thumbnail }) => {
-                    return <ApplicantPics thumbnail={thumbnail} />;
+                  {ApplicantData.map((e) => {
+                    return <ApplicantPics thumbnail={e} />;
                   })}
                 </ListContainer>
                 <ModalClose onClick={toggleModal}>닫기</ModalClose>

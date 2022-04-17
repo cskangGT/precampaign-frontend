@@ -11,8 +11,9 @@ export default function List() {
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const accessToken = localStorage.getItem('access_token');
-  const BASE_URL = 'http://10.58.5.111:8081/users/signin';
+  const BASE_URL = 'http://172.1.4.173:8000/campaigns';
   const [applicantData, setApplicantData] = useState([]);
+  const [rateValue, setRateValue] = useState(0);
 
   const goToBack = () => {
     return navigate('/campaigns');
@@ -22,25 +23,27 @@ export default function List() {
     return navigate('/accepted-applicants-list');
   };
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     fetch(`${BASE_URL}/` + params.id, {
-  //       headers: { Authorization: accessToken },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setApplicantData(data);
-  //       });
-  //   }
-  // }, []);
-
   useEffect(() => {
-    fetch('/data/userData.json')
-      .then((res) => res.json())
-      .then((res) => {
-        setApplicantData(res.Data);
-      });
+    if (accessToken) {
+      console.log('params', params);
+      fetch(`${BASE_URL}/` + params, {
+        headers: { authorization: accessToken },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setApplicantData(data);
+        });
+    }
   }, []);
+
+  // useEffect(() => {
+  //   fetch('/data/userData.json')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.applicants);
+  //     });
+  // }, [rateValue]);
 
   return (
     <>
@@ -64,21 +67,37 @@ export default function List() {
             <RateTitle>Rate</RateTitle>
             <EvaluationTitle>Check</EvaluationTitle>
           </TitleBox>
-          {applicantData.map(({ name, platform, thumbnail, gender, accountName, height, weight, keyword, rate }) => {
-            return (
-              <ApplicantCard
-                name={name}
-                platform={platform}
-                thumbnail={thumbnail}
-                gender={gender}
-                accountName={accountName}
-                height={height}
-                weight={weight}
-                keyword={keyword}
-                rate={rate}
-              />
-            );
-          })}
+          {applicantData.map(
+            ({
+              id,
+              name,
+              gender,
+              height,
+              weight,
+              thumbnail,
+              contact,
+              address,
+              platform_account,
+              platform,
+              keyword,
+              rate,
+            }) => {
+              return (
+                <ApplicantCard
+                  key={id}
+                  name={name}
+                  gender={gender}
+                  height={height}
+                  weight={weight}
+                  platform={platform}
+                  thumbnail={thumbnail}
+                  accountName={platform_account}
+                  keyword={keyword}
+                  rate={rate}
+                />
+              );
+            },
+          )}
         </ListContainer>
       </Container>
     </>
