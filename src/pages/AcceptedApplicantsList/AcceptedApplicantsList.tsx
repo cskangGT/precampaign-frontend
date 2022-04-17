@@ -36,11 +36,12 @@ export default function AcceptedApplicantsList() {
         </Nav>
         <ListContainer>
           {acceptedApplicants &&
-            acceptedApplicants.map(({ thumbnail_url, name, birthdate, contact, address }) => {
+            acceptedApplicants.map(({ thumbnail_url, name, gender, birthdate, contact, address }) => {
               return (
                 <UserCard
                   thumbnail_url={thumbnail_url}
                   name={name}
+                  gender={gender}
                   birthdate={birthdate}
                   contact={contact}
                   address={address}
@@ -56,7 +57,6 @@ export default function AcceptedApplicantsList() {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,28 +67,32 @@ const Container = styled.div`
 const Nav = styled.div`
   width: 1500px;
   height: 75px;
-  background-color: yellow;
   display: flex;
-  align-items: center;
 `;
 
 const GoBack = styled.button`
   width: 125px;
   height: 50px;
   background-color: lightgray;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid gray;
+  font-size: 16px;
   cursor: pointer;
+  :hover {
+    background-color: gray;
+    border: 1px solid darkgray;
+  }
 `;
 
 const ListContainer = styled.div`
   width: 1500px;
-  height: 750px;
+  height: 800px;
   border: 1px solid black;
-  background-color: green;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+  border-radius: 10px;
 `;
