@@ -37,7 +37,6 @@ export default function List() {
             <NameTitle>Name</NameTitle>
             <GenderTitle>Gender</GenderTitle>
             <PlatformTitle>Platform</PlatformTitle>
-            <AccountNameTitle>Account Name</AccountNameTitle>
             <HeightTitle>Height</HeightTitle>
             <WeightTitle>Weight</WeightTitle>
             <KeywordTitle>Keyword</KeywordTitle>
@@ -132,30 +131,26 @@ const NameTitle = styled(Title)`
 `;
 
 const GenderTitle = styled(Title)`
-  width: 5%;
+  width: 6%;
 `;
 
 const PlatformTitle = styled(Title)`
   width: 10%;
 `;
 
-const AccountNameTitle = styled(Title)`
-  width: 10%;
-`;
-
 const HeightTitle = styled(Title)`
-  width: 5%;
+  width: 7%;
 `;
 
 const WeightTitle = styled(Title)`
-  width: 5%;
+  width: 7%;
 `;
 
 const KeywordTitle = styled(Title)`
-  width: 10%;
+  width: 14%;
 `;
 
 const CampaignNameTitle = styled(Title)`
-  width: 25%;
+  width: 26%;
   border-right: none;
 `;
