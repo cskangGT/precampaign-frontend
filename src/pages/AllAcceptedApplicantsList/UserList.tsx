@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 interface User {
   name: string;
+  thumbnail: string;
   gender: string;
   platform: string;
   accountName: string;
@@ -12,12 +13,22 @@ interface User {
   campaignName: string;
 }
 
-export default function UserList({ name, gender, platform, accountName, height, weight, keyword, campaignName }: User) {
+export default function UserList({
+  name,
+  thumbnail,
+  gender,
+  platform,
+  accountName,
+  height,
+  weight,
+  keyword,
+  campaignName,
+}: User) {
   return (
     <>
       <Container>
         <Thumbnail>
-          <img src="https://cdn.pixabay.com/photo/2022/04/03/13/54/woman-7109043_1280.jpg" width="140px" />
+          <ThumbnailImg src={thumbnail} />
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
@@ -33,10 +44,12 @@ export default function UserList({ name, gender, platform, accountName, height, 
 }
 
 const Container = styled.div`
-  background-color: gray;
   height: 150px;
   display: flex;
   justify-content: space-around;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin: 5px 0;
 `;
 
 const UserCard = styled.div`
@@ -44,11 +57,17 @@ const UserCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  margin: 10px 0;
+  border-right: 1px solid lightgray;
 `;
 
 const Thumbnail = styled(UserCard)`
   width: 20%;
+`;
+
+const ThumbnailImg = styled.img`
+  width: 120px;
+  border-radius: 5px;
 `;
 const Name = styled(UserCard)`
   width: 10%;
@@ -73,4 +92,5 @@ const Keyword = styled(UserCard)`
 `;
 const CampaignName = styled(UserCard)`
   width: 25%;
+  border-right: none;
 `;
