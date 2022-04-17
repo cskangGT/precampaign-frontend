@@ -125,7 +125,7 @@ export default function ApplicantCard({
                     </StarRate>
                   </TrendBox>
                   <CreativeBox>
-                    <Creative>독창성</Creative>
+                    <Creative>창의성</Creative>
                     <StarRate>
                       <StarRating />
                     </StarRate>
