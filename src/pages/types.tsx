@@ -1,6 +1,6 @@
 export interface CampaignCardInfo {
   id: number;
-  thumbnail_url: string;
+  thumbnail: string;
   title: string;
   status: string;
   evaluation_start_date: string;

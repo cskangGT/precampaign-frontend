@@ -6,7 +6,7 @@ export default function ApplicantPics({ thumbnail }: ApplicantPicsProps) {
   return (
     <>
       <Container>
-        <UserImg src={thumbnail}></UserImg>
+        <UserImg src={thumbnail} />
       </Container>
     </>
   );
