@@ -11,7 +11,7 @@
       "address": "용인시",
       "platform_account" :  "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword": ["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 1,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 원피스 캠페인", "여름 바지 캠페인", "가을 모자 캠페인"]
@@ -27,7 +27,7 @@
       "address": "용인시",
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 2,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
@@ -43,7 +43,7 @@
       "address": "용인시",
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 3,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 이너 캠페인", "여름 바지 캠페인", "겨울 코트 캠페인"]
@@ -59,7 +59,7 @@
       "address": "용인시",
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 4,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
@@ -76,7 +76,7 @@
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
       "accountName": "Keng",
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 5,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
@@ -92,7 +92,7 @@
       "address": "용인시",
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 6,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
@@ -108,7 +108,7 @@
       "address": "용인시",
       "platform_account" : "strong_krh",
       "platform": ["Instagram", "Facebook", "Cyworld"],
-      "keyword":"미니멀",
+      "keyword":["미니멀", "켕주얼", "아방가르드"],
       "campaign_applicant_id": 7,
       "rate": 4.5,
       "acceptedCampaigns": ["봄 아우터 캠페인", "여름 반바지 캠페인", "가을 상의 캠페인"]
