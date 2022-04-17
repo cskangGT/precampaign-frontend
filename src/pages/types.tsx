@@ -16,7 +16,7 @@ export interface ApplicantInfo {
   gender: string;
   height: string;
   weight: string;
-  keword: string;
+  keyword: string;
 }
 
 export interface ApplicantProps {

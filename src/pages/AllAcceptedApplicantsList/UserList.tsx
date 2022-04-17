@@ -9,7 +9,7 @@ interface User {
   accountName: string;
   height: number;
   weight: number;
-  keyword: string;
+  keyword: string[];
   acceptedCampaigns: string[];
 }
 
@@ -38,7 +38,11 @@ export default function UserList({
         </Platform>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
-        <Keyword>{keyword}</Keyword>
+        <Keyword>
+          {keyword.map((item) => {
+            return <Keywords>{item}</Keywords>;
+          })}
+        </Keyword>
         <AcceptedCampaigns>
           {acceptedCampaigns.map((item) => {
             return <Campaign>{item}</Campaign>;
@@ -60,6 +64,7 @@ const Container = styled.div`
 
 const Campaign = styled.div``;
 const Platforms = styled.div``;
+const Keywords = styled.div``;
 
 const UserCard = styled.div`
   width: 100px;
@@ -98,6 +103,9 @@ const Weight = styled(UserCard)`
   width: 7%;
 `;
 const Keyword = styled(UserCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 14%;
 `;
 const AcceptedCampaigns = styled(UserCard)`
