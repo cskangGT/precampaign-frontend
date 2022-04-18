@@ -51,10 +51,16 @@ export default function List() {
     <>
       <Container>
         <Nav>
-          <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
-          <CampaignTitle>{campaignName}</CampaignTitle>
-          {/* <GoToResult>결과 확인</GoToResult> */}
-          {campaignStatus === 'Termination' && <GoToResult onClick={goToAcceptedPplList}>결과 확인</GoToResult>}
+          <NavLeft>
+            <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
+          </NavLeft>
+          <NavCenter>
+            <CampaignTitle>{campaignName}</CampaignTitle>
+          </NavCenter>
+          <NavRight>
+            <CampaignEnd>캠페인 종료</CampaignEnd>
+            {campaignStatus === 'Termination' && <GoToResult onClick={goToAcceptedPplList}>결과 확인</GoToResult>}
+          </NavRight>
         </Nav>
         <ListContainer>
           <TitleBox>
@@ -126,6 +132,26 @@ const Nav = styled.div`
   height: 100px;
 `;
 
+const NavLeft = styled.div`
+  width: 33%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const NavCenter = styled.div`
+  width: 34%;
+  display: flex;
+  justify-content: center;
+`;
+
+const NavRight = styled.div`
+  width: 33%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const GogoToBack = styled.button`
   width: 125px;
   height: 50px;
@@ -137,15 +163,15 @@ const GogoToBack = styled.button`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 16px;
-  margin-right: 375px;
   :hover {
     background-color: gray;
     border: 1px solid darkgray;
+    font-weight: bold;
   }
 `;
 
 const CampaignTitle = styled.div`
-  width: 500px;
+  width: 400px;
   height: 50px;
   background-color: lightgray;
   border-radius: 10px;
@@ -155,7 +181,25 @@ const CampaignTitle = styled.div`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 20px;
-  margin-right: 375px;
+`;
+
+const CampaignEnd = styled.div`
+  width: 150px;
+  height: 50px;
+  background-color: #364f8c;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  :hover {
+    background-color: #01013b;
+    border: 1px solid gray;
+    font-weight: bold;
+  }
 `;
 
 const GoToResult = styled.div`
@@ -169,9 +213,11 @@ const GoToResult = styled.div`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 16px;
+  margin-left: 40px;
   :hover {
     background-color: gray;
     border: 1px solid darkgray;
+    font-weight: bold;
   }
 `;
 
