@@ -8,17 +8,22 @@ import CampaignCardList from './CampaignCardList/CampaignCardList';
 
 const CampaignList: React.FC = () => {
   const BASE_URL = 'http://172.1.4.173:8080';
-  const token = localStorage.getItem('access_token');
+  const token: string | null = localStorage.getItem('access_token');
   const location = useLocation();
   const navigate = useNavigate();
   const [searchInputText, setSearchInputText] = useState<string>('');
-  // Type 추론이 되지만 우선 공부 목적아로 <> 남겨둠
   const [campaignCardList, setCampaignCardList] = useState<CampaignCardInfo[]>([]);
 
   const [queryData, setQueryData] = useState<QueryInfo>({
     query_for_status: '',
     query_for_sort: '',
   });
+  const requestHeaders: HeadersInit = new Headers();
+  if (token === null) {
+    console.log('token is null');
+  } else {
+    requestHeaders.set('Authorization', token);
+  }
 
   let searchInputHandler = (e: { target: { value: string } }) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -26,18 +31,12 @@ const CampaignList: React.FC = () => {
   };
 
   useEffect(() => {
-    // console.log('location.search', location.search);
-    // console.log(localStorage.getItem('access_token'));
     fetch(`${BASE_URL}/campaigns${location.search}`, {
-      headers: { authorization: token },
-      //TODO: Bloker!!해결할것
+      headers: requestHeaders,
     })
       .then((res) => res.json())
       .then((res) => setCampaignCardList(res));
   }, [location.search]);
-
-  // console.log(campaignCardList);
-  // setCampaignCardList(res.data);
 
   const changeSection = (sectionParam: string) => {
     if (sectionParam === '') {
@@ -51,7 +50,6 @@ const CampaignList: React.FC = () => {
   };
 
   const updateSort = (e: { target: { value: string } }) => {
-    // console.log(e.target.value);
     const newQuery = queryData;
     newQuery.query_for_sort = e.target.value;
     updateQuery(newQuery);
@@ -121,7 +119,7 @@ const Main = styled.div`
   row-gap: 30px;
 `;
 
-const Header = styled.h1`
+const Header = styled.div`
   text-align: center;
   margin: 10px;
   font-size: 40px;
@@ -157,10 +155,6 @@ const GoToAllAccepted = styled.button`
   color: white;
   cursor: pointer;
 `;
-
-////////////
-
-////////////////////////////////
 
 const ProgressContainer = styled.div`
   width: 90%;
@@ -213,5 +207,3 @@ const SortSelectBox = styled.select`
   font-size: 14px;
   margin-right: 60px;
 `;
-
-///////////////

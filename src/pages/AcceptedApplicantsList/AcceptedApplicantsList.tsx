@@ -25,8 +25,6 @@ export default function AcceptedApplicantsList() {
       });
   }, []);
 
-  // login -> token -> accedss_token -> localStorage.getItem
-  // Authorization: localStorage.getItem(access_token) -> app
   return (
     <>
       <Container>

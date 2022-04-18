@@ -11,8 +11,8 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
   const setCampainName = useSetRecoilState(campaginNameState);
   const setCampaignStatus = useSetRecoilState(campaignStatusState);
 
-  const goToApplicantList = (promId: number, campTitle: string, campStatus: string) => {
-    navigate(`/campaigns/${promId}`);
+  const goToApplicantList = (paramId: number, campTitle: string, campStatus: string) => {
+    navigate(`/campaigns/${paramId}`);
     setCampainName(campTitle);
     setCampaignStatus(campStatus);
   };
