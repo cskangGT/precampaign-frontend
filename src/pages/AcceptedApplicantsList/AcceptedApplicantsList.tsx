@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import UserCard from './UserCard';
 
 export default function AcceptedApplicantsList() {
-  const [acceptedApplicants, setacceptedApplicants] = useState([]);
+  const [acceptedApplicants, setAcceptedApplicants] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
-  const token: any = localStorage.getItem('token');
-  const BASE_URL = 'http://172.1.7.241:8081/campaigns/accepted-applicants-list';
+  const token: any = localStorage.getItem('access_token');
+  const BASE_URL = 'http://172.1.4.173:8080/campaigns/accepted-applicants-list';
   const back = () => {
     return navigate(-1);
   };
@@ -22,7 +22,7 @@ export default function AcceptedApplicantsList() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        setacceptedApplicants(res.applicants);
+        setAcceptedApplicants(res.applicants);
       });
   }, []);
 

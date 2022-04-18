@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CampaignCardList from './CampaignCardList/CampaignCardList';
 
 const CampaignList: React.FC = () => {
-  const BASE_URL = '172.1.7.241:8081';
+  const BASE_URL = '172.1.4.173:8080';
   const token = localStorage.getItem('access_token');
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const CampaignList: React.FC = () => {
   });
 
   let searchInputHandler = (e: { target: { value: string } }) => {
-    var lowerCase = e.target.value.toLowerCase();
+    let lowerCase = e.target.value.toLowerCase();
     setSearchInputText(lowerCase);
   };
 

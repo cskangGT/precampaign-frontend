@@ -1,6 +1,6 @@
 export interface CampaignCardInfo {
   id: number;
-  thumbnail: string;
+  thumbnail_url: string;
   title: string;
   status: string;
   evaluation_start_date: string;
@@ -28,13 +28,18 @@ export interface ApplicantProps {
   accountName: string;
   height: number;
   weight: number;
-  keyword: string[];
-  rate: number;
+  keywords: string[];
+  rate: { rate_avg: number };
   campaignApplicantId: number;
   campaignParam: string | undefined;
   BASE_URL: string;
+  setAvgRate: any;
 }
 
 export interface ApplicantPicsProps {
   thumbnail: string;
+}
+
+export interface StarRatingProps {
+  rateKind: string;
 }

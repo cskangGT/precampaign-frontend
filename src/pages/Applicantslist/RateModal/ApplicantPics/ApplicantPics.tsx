@@ -14,7 +14,7 @@ export default function ApplicantPics({ thumbnail }: ApplicantPicsProps) {
 
 const Container = styled.div`
   width: 400px;
-  height: 450px;
+  height: 450p dx;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -4,17 +4,19 @@ import styled from '@emotion/styled';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ApplicantCard from './ApplicantCard/ApplicantCard';
 import { campaginNameState, campaignStatusState } from '../Recoil/Atoms/atomCampaign';
+import { Button } from '@material-ui/core';
 
 export default function List() {
   const navigate = useNavigate();
   const params = useParams();
+  const setCampaignStatus = useSetRecoilState(campaignStatusState);
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const accessToken = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.7.241:8081/campaigns';
+  const BASE_URL = 'http://172.1.4.173:8080/campaigns';
   // const BASE_URL = 'data/userData.json';
   const [applicantData, setApplicantData] = useState([]);
-  const [rateValue, setRateValue] = useState(0);
+  const [rateAvgValue, setRateAvgValue] = useState(0);
   const campaign_param = params.campaignId;
   // 어차피 state 값 변하면 reloading 됨.
   const goToBack = () => {
@@ -25,36 +27,49 @@ export default function List() {
     return navigate(`/campaigns/accepted-applicants-list/${params.campaignId}`);
   };
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     fetch(`${BASE_URL}/${params.campaignId}`, {
-  //       headers: { authorization: accessToken },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         // console.log(campaign_param);
-  //         setApplicantData(data);
-  //       });
-  //   }
-  // }, []);
-
   useEffect(() => {
-    fetch('/data/userData.json')
+    if (accessToken) {
+      fetch(`${BASE_URL}/${params.campaignId}`, {
+        headers: { authorization: accessToken },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // console.log(campaign_param);
+          setApplicantData(data);
+        });
+    }
+  }, [rateAvgValue]);
+
+  const terminateCampaign = () => {
+    fetch(`${BASE_URL}/${campaign_param}`, {
+      method: 'PATCH',
+      headers: { authorization: accessToken },
+      body: JSON.stringify({
+        status: 'Termination',
+      }),
+    })
       .then((res) => res.json())
       .then((res) => {
-        setApplicantData(res.applicants);
+        // console.log(res);
+        setCampaignStatus(res.status);
       });
-  }, []);
+  };
 
   return (
     <>
       <Container>
         <Nav>
-          <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
-          <CampaignTitle>{campaignName}</CampaignTitle>
-          {/* <GoToResult>결과 확인</GoToResult> */}
-          {campaignStatus === 'Termination' && <GoToResult onClick={goToAcceptedPplList}>결과 확인</GoToResult>}
+          <NavLeft>
+            <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
+          </NavLeft>
+          <NavCenter>
+            <CampaignTitle>{campaignName}</CampaignTitle>
+          </NavCenter>
+          <NavRight>
+            <CampaignEnd onClick={terminateCampaign}>캠페인 종료</CampaignEnd>
+            {campaignStatus === 'Termination' && <GoToResult onClick={goToAcceptedPplList}>결과 확인</GoToResult>}
+          </NavRight>
         </Nav>
         <ListContainer>
           <TitleBox>
@@ -79,7 +94,7 @@ export default function List() {
               thumbnail,
               platform_account,
               platform,
-              keyword,
+              keywords,
               campaign_applicant_id,
               rate,
             }) => {
@@ -91,14 +106,15 @@ export default function List() {
                   gender={gender}
                   height={height}
                   weight={weight}
-                  platform={platform}
                   thumbnail={thumbnail}
+                  platform={platform}
                   accountName={platform_account}
-                  keyword={keyword}
+                  keywords={keywords}
                   rate={rate}
                   campaignApplicantId={campaign_applicant_id}
                   campaignParam={campaign_param}
                   BASE_URL={BASE_URL}
+                  setAvgRate={setRateAvgValue}
                 />
               );
             },
@@ -125,6 +141,26 @@ const Nav = styled.div`
   height: 100px;
 `;
 
+const NavLeft = styled.div`
+  width: 33%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const NavCenter = styled.div`
+  width: 34%;
+  display: flex;
+  justify-content: center;
+`;
+
+const NavRight = styled.div`
+  width: 33%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const GogoToBack = styled.button`
   width: 125px;
   height: 50px;
@@ -136,15 +172,15 @@ const GogoToBack = styled.button`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 16px;
-  margin-right: 375px;
   :hover {
     background-color: gray;
     border: 1px solid darkgray;
+    font-weight: bold;
   }
 `;
 
 const CampaignTitle = styled.div`
-  width: 500px;
+  width: 400px;
   height: 50px;
   background-color: lightgray;
   border-radius: 10px;
@@ -154,7 +190,25 @@ const CampaignTitle = styled.div`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 20px;
-  margin-right: 375px;
+`;
+
+const CampaignEnd = styled.div`
+  width: 150px;
+  height: 50px;
+  background-color: #364f8c;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  :hover {
+    background-color: #01013b;
+    border: 1px solid gray;
+    font-weight: bold;
+  }
 `;
 
 const GoToResult = styled.div`
@@ -168,9 +222,11 @@ const GoToResult = styled.div`
   border: 1px solid gray;
   cursor: pointer;
   font-size: 16px;
+  margin-left: 40px;
   :hover {
     background-color: gray;
     border: 1px solid darkgray;
+    font-weight: bold;
   }
 `;
 

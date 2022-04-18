@@ -5,23 +5,22 @@ import UserList from './UserList';
 
 export default function List() {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState([]);
-  const token: any = localStorage.getItem('token');
-
+  const [allAcceptants, setAllAcceptants] = useState([]);
+  const token: any = localStorage.getItem('access_token');
+  const BASE_URL = 'http://172.1.7.241:8081/applicants';
   const back = () => {
     return navigate('/campaigns');
   };
-
   useEffect(() => {
-    fetch('/data/userData.json', {
+    fetch(`${BASE_URL}/all-accepted-applicants-list`, {
       headers: {
-        Authoriization: token,
+        Authorization: token,
       },
-    });
-    fetch('/data/userData.json')
+    })
       .then((res) => res.json())
       .then((res) => {
-        setUserData(res.applicants);
+        console.log(res);
+        setAllAcceptants(res.applicants);
       });
   }, []);
 
@@ -42,8 +41,8 @@ export default function List() {
             <KeywordTitle>Keyword</KeywordTitle>
             <AcceptedCampaignsTitle>Accepted Campaigns</AcceptedCampaignsTitle>
           </TitleBox>
-          {userData.map(
-            ({ name, thumbnail, gender, platform, accountName, height, weight, keyword, acceptedCampaigns }) => {
+          {allAcceptants.map(
+            ({ name, thumbnail, gender, platform, accountName, height, weight, keyword, accepted_campaigns }) => {
               return (
                 <UserList
                   name={name}
@@ -54,7 +53,7 @@ export default function List() {
                   height={height}
                   weight={weight}
                   keyword={keyword}
-                  acceptedCampaigns={acceptedCampaigns}
+                  acceptedCampaigns={accepted_campaigns}
                 />
               );
             },
