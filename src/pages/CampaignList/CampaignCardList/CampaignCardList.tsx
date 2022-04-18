@@ -2,7 +2,7 @@ import React from 'react';
 // import searchData from '../PclDummy/PclDummy';
 import styled from '@emotion/styled';
 import CampaignCard from '../CampaginCard/CampaignCard';
-import { CampaignCardInfo } from '../../types';
+import { CampaignCardInfo } from '../../Types/types';
 
 interface CampaignCardListProps {
   searchInputText: string;
