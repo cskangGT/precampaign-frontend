@@ -43,3 +43,27 @@ export interface ApplicantPicsProps {
 export interface StarRatingProps {
   rateKind: string;
 }
+export interface AllAcceptantsProps {
+  name: string;
+  thumbnail: string;
+  gender: string;
+  platforms: string[];
+  accountName: string;
+  height: number;
+  weight: number;
+  keywords: string[];
+  acceptedCampaigns: string[];
+}
+
+export interface CampaignCardProps {
+  campaignCard: CampaignCardInfo;
+}
+
+export interface AcceptedApplicantsCardprop {
+  thumbnail_url: string;
+  name: string;
+  gender: string;
+  birthdate: string;
+  contact: string;
+  address: string;
+}

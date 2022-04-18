@@ -8,7 +8,7 @@ import {
   creativityRateState,
   trendRateState,
 } from '../../Recoil/Atoms/atomCampaign';
-import { ApplicantProps } from '../../types';
+import { ApplicantProps } from '../../Types/types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
@@ -103,8 +103,8 @@ export default function ApplicantCard({
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
         <Keyword>
-          {keywords.map((item: string) => {
-            return <Keywords>{item}</Keywords>;
+          {keywords.map((item: string, index: number) => {
+            return <Keywords key={index}>{item}</Keywords>;
           })}
         </Keyword>
         <Rate>{rate.rate_avg}</Rate>
@@ -127,19 +127,19 @@ export default function ApplicantCard({
                       <UserWeight>{weight}</UserWeight>
                       <UserKeywordBox>Keyword</UserKeywordBox>
                       <UserKeyword>
-                        {keywords.map((item: string) => {
-                          return <Keywords>{item}/</Keywords>;
+                        {keywords.map((item: string, index: number) => {
+                          return <Keywords key={index}>{item}/</Keywords>;
                         })}
                       </UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {applicantData.map((image) => {
-                    return <ApplicantPics thumbnail={image} />;
+                  {applicantData.map((image: string, index: number) => {
+                    return <ApplicantPics thumbnail={image} key={index} />;
                   })}
                 </ListContainer>
                 <EvaluationStandard>
                   <BackgroundBox>
-                    <Background>배경</Background>
+                    <Background>연출</Background>
                     <StarRate>
                       <StarRating rateKind={rateKind[0]} />
                     </StarRate>

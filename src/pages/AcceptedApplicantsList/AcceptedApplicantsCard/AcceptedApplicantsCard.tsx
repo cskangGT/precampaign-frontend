@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { AcceptedApplicantsCardprop } from '../../Types/types';
 
-interface User {
-  thumbnail_url: string;
-  name: string;
-  gender: string;
-  birthdate: string;
-  contact: string;
-  address: string;
-}
-
-export default function UserCard({ thumbnail_url, name, gender, birthdate, contact, address }: User) {
+export default function UserCard({
+  thumbnail_url,
+  name,
+  gender,
+  birthdate,
+  contact,
+  address,
+}: AcceptedApplicantsCardprop) {
   return (
     <>
       <Container>

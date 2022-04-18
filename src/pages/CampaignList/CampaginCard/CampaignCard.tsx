@@ -2,12 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import styled from '@emotion/styled';
-import { CampaignCardInfo } from '../../types';
+import { CampaignCardProps } from '../../types';
 import { campaginNameState, campaignStatusState } from '../../Recoil/Atoms/atomCampaign';
-
-interface CampaignCardProps {
-  campaignCard: CampaignCardInfo;
-}
 
 function CampaignCard({ campaignCard }: CampaignCardProps) {
   const { id, thumbnail_url, title, status, evaluation_start_date } = campaignCard;

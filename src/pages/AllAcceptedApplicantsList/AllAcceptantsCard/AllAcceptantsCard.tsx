@@ -1,28 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { AllAcceptantsProps } from '../../Types/types';
 
-interface User {
-  name: string;
-  thumbnail: string;
-  gender: string;
-  platform: string[];
-  accountName: string;
-  height: number;
-  weight: number;
-  keyword: string[];
-  acceptedCampaigns: string[];
-}
-
-export default function UserList({
+export default function AllAcceptants({
   name,
   thumbnail,
   gender,
-  platform,
+  platforms,
   height,
   weight,
-  keyword,
+  keywords,
   acceptedCampaigns,
-}: User) {
+}: AllAcceptantsProps) {
   return (
     <>
       <Container>
@@ -32,20 +21,20 @@ export default function UserList({
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
         <Platform>
-          {platform.map((item) => {
-            return <Platforms>{item}</Platforms>;
+          {platforms.map((item: string, index: number) => {
+            return <Platforms key={index}>{item}</Platforms>;
           })}
         </Platform>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
         <Keyword>
-          {keyword.map((item) => {
-            return <Keywords>{item}</Keywords>;
+          {keywords.map((item: string, index: number) => {
+            return <Keywords key={index}>{item}</Keywords>;
           })}
         </Keyword>
         <AcceptedCampaigns>
-          {acceptedCampaigns.map((item) => {
-            return <Campaign>{item}</Campaign>;
+          {acceptedCampaigns.map((item: string, index: number) => {
+            return <Campaign key={index}>{item}</Campaign>;
           })}
         </AcceptedCampaigns>
       </Container>

@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ApplicantCard from './ApplicantCard/ApplicantCard';
 import { campaginNameState, campaignStatusState } from '../Recoil/Atoms/atomCampaign';
-import { Button } from '@material-ui/core';
 
 export default function List() {
   const navigate = useNavigate();

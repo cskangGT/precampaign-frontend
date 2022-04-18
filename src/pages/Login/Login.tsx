@@ -45,7 +45,7 @@ export default function Login() {
         <LoginContainer>
           <CompanyName>
             <BrandName>MLB</BrandName>
-            Pre Campaigns
+            Pre-Campaigns
           </CompanyName>
           <LoginBox>
             <IdBox>

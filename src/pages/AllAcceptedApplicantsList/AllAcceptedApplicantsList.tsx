@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import UserList from './UserList';
+import AllAcceptantsCard from './AllAcceptantsCard/AllAcceptantsCard';
 
 export default function List() {
   const navigate = useNavigate();
-  const [allAcceptants, setAllAcceptants] = useState([]);
+  const [allAcceptantsCard, setAllAcceptantsCard] = useState([]);
   const token: any = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.7.241:8081/applicants';
+  const BASE_URL = 'http://172.1.4.173:8080/applicants';
   const back = () => {
     return navigate('/campaigns');
   };
@@ -19,8 +19,7 @@ export default function List() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        setAllAcceptants(res.applicants);
+        setAllAcceptantsCard(res.applicants);
       });
   }, []);
 
@@ -41,19 +40,20 @@ export default function List() {
             <KeywordTitle>Keyword</KeywordTitle>
             <AcceptedCampaignsTitle>Accepted Campaigns</AcceptedCampaignsTitle>
           </TitleBox>
-          {allAcceptants.map(
-            ({ name, thumbnail, gender, platform, accountName, height, weight, keyword, accepted_campaigns }) => {
+          {allAcceptantsCard.map(
+            ({ id, name, thumbnail, gender, platforms, accountName, height, weight, keywords, campaigns }) => {
               return (
-                <UserList
+                <AllAcceptantsCard
+                  key={id}
                   name={name}
                   thumbnail={thumbnail}
                   gender={gender}
-                  platform={platform}
+                  platforms={platforms}
                   accountName={accountName}
                   height={height}
                   weight={weight}
-                  keyword={keyword}
-                  acceptedCampaigns={accepted_campaigns}
+                  keywords={keywords}
+                  acceptedCampaigns={campaigns}
                 />
               );
             },

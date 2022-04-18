@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
-import UserCard from './UserCard';
+import AcceptedApplicantsCard from './AcceptedApplicantsCard/AcceptedApplicantsCard';
 
 export default function AcceptedApplicantsList() {
-  const [acceptedApplicants, setAcceptedApplicants] = useState([]);
+  const [acceptedApplicantsCard, setAcceptedApplicantsCard] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
   const token: any = localStorage.getItem('access_token');
@@ -21,8 +21,7 @@ export default function AcceptedApplicantsList() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        setAcceptedApplicants(res.applicants);
+        setAcceptedApplicantsCard(res.applicants);
       });
   }, []);
 
@@ -35,10 +34,11 @@ export default function AcceptedApplicantsList() {
           <GoBack onClick={back}>뒤로 가기</GoBack>
         </Nav>
         <ListContainer>
-          {acceptedApplicants &&
-            acceptedApplicants.map(({ thumbnail_url, name, gender, birthdate, contact, address }) => {
+          {acceptedApplicantsCard &&
+            acceptedApplicantsCard.map(({ id, thumbnail_url, name, gender, birthdate, contact, address }) => {
               return (
-                <UserCard
+                <AcceptedApplicantsCard
+                  key={id}
                   thumbnail_url={thumbnail_url}
                   name={name}
                   gender={gender}
