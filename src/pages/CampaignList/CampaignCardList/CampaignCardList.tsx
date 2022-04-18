@@ -40,6 +40,8 @@ function CampaignCardList({ searchInputText, campaignCardList }: CampaignCardLis
 export default CampaignCardList;
 
 const SearchItems = styled.ul`
+  width: 100%;
+  height: 100vh;
   font-size: 20px;
   display: flex;
   width: 90%;

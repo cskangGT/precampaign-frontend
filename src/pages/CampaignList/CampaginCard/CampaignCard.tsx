@@ -46,11 +46,12 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
 export default CampaignCard;
 
 const CampaignItem = styled.article`
-  margin: 30px 50px 0 50px;
+  margin: 30px 30px 30px;
+  width: 20%;
 `;
 
 const CampaignImg = styled.img`
-  width: 275px;
+  width: 100%;
   height: 290px;
   border-radius: 5px;
 `;
