@@ -1,19 +1,25 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './pages/App';
-import Expenses from './components/Expenses';
-import Invoices from './components/Invoices';
-import Login from './pages/Login';
+import AcceptedApplicantsList from './pages/AcceptedApplicantsList/AcceptedApplicantsList';
+import Applicantslist from './pages/Applicantslist/Applicantslist';
+import Login from './pages/Login/Login';
+import CampaignList from './pages/CampaignList/CampaignList';
+import AllAcceptedApplicantsList from './pages/AllAcceptedApplicantsList/AllAcceptedApplicantsList';
 
 function Router() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/expenses" element={<Expenses />} />
-        <Route path="/invoices" element={<Invoices />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <RecoilRoot>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/applicantslist" element={<Applicantslist />} />
+          <Route path="/campaigns/:campaignId" element={<Applicantslist />} />
+          <Route path="/campaigns/accepted-applicants-list/:campaignId" element={<AcceptedApplicantsList />} />
+          <Route path="/all-accepted-applicants-list" element={<AllAcceptedApplicantsList />} />
+          <Route path="/campaigns" element={<CampaignList />} />
+        </Routes>
+      </RecoilRoot>
     </BrowserRouter>
   );
 }

@@ -6,29 +6,33 @@ export default function Login() {
   const [idValue, setIdValue] = useState('');
   const [pwValue, setPwValue] = useState('');
 
-  const handleIdInput = (event: any) => {
-    setIdValue(event.target.value);
+  const handleIdInput = (e: { target: { value: string } }) => {
+    setIdValue(e.target.value);
   };
 
-  const handlePwInput = (event: any) => {
-    setPwValue(event.target.value);
+  const handlePwInput = (e: { target: { value: string } }) => {
+    setPwValue(e.target.value);
   };
 
   const navigate = useNavigate();
+  // http://3.36.173.130:8000/users/signin
 
-  const handleFetch = () => {
-    fetch('http://172.1.7.241:8081/users/signin', {
+  const handleLogin = () => {
+    fetch('http://172.1.4.173:8080/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,
         password: pwValue,
       }),
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
     })
       .then((response) => response.json())
       .then((result) => {
-        if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          navigate('/');
+        if (result.accessToken) {
+          localStorage.setItem('access_token', result.accessToken);
+          navigate('/campaigns');
         } else {
           alert('아이디와 비밀번호를 확인해주세요!');
         }
@@ -39,7 +43,10 @@ export default function Login() {
     <>
       <Container>
         <LoginContainer>
-          <CompanyName>F & F</CompanyName>
+          <CompanyName>
+            <BrandName>MLB</BrandName>
+            Pre Campaign
+          </CompanyName>
           <LoginBox>
             <IdBox>
               <Id>ID</Id>
@@ -50,7 +57,9 @@ export default function Login() {
               <PwInput placeholder="비밀번호를 입력해주세요" onChange={handlePwInput} type="password"></PwInput>
             </PwBox>
           </LoginBox>
-          <LoginBtn onClick={handleFetch}>로그인</LoginBtn>
+          <LoginBtn type="submit" onClick={handleLogin}>
+            로그인
+          </LoginBtn>
         </LoginContainer>
       </Container>
     </>
@@ -64,30 +73,40 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: sans-serif;
   box-sizing: border-box;
+  color: #01013b;
 `;
 
 const LoginContainer = styled.div`
   width: 600px;
   height: 700px;
-  /* background-color: lightgray; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
   border: 1px solid gray;
+  background-color: white;
 `;
 
 const CompanyName = styled.div`
+  width: 80%;
   font-size: 60px;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: 40px 0;
 `;
 
-const LoginBox = styled.div`
+const BrandName = styled.h1`
+  font-size: 60px;
+  font-weight: bold;
+`;
+
+const LoginBox = styled.form`
   width: 600px;
   height: 200px;
-  /* background-color: blue; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -97,29 +116,33 @@ const LoginBox = styled.div`
 const IdBox = styled.div`
   width: 500px;
   height: 75px;
-  /* background-color: gray; */
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
 
 const Id = styled.div`
-  width: 120px;
-  height: 40px;
-  /* background-color: skyblue; */
+  width: 100px;
+  height: 47px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const IdInput = styled.input`
-  width: 300px;
-  height: 35px;
+  width: 320px;
+  height: 47px;
   outline: none;
-  padding-left: 10px;
+  padding-left: 13px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 16px;
+  :hover {
+    border: 2px solid #01013b;
+  }
 `;
 
 const PwBox = styled.div`
@@ -132,30 +155,42 @@ const PwBox = styled.div`
 `;
 
 const Pw = styled.div`
-  width: 120px;
-  height: 40px;
+  width: 100px;
+  height: 47px;
   /* background-color: skyblue; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const PwInput = styled.input`
-  width: 300px;
-  height: 35px;
+  width: 320px;
+  height: 47px;
   outline: none;
-  padding-left: 10px;
+  padding-left: 13px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 16px;
+  :hover {
+    border: 2px solid #01013b;
+  }
 `;
 
 const LoginBtn = styled.button`
   width: 140px;
   height: 50px;
-  /* background-color: pink; */
+  background-color: gray;
   cursor: pointer;
   border-radius: 10px;
   font-size: 20px;
-  border: 1px solid gray;
+  border: none;
+  color: white;
+  border: 1px solid darkgray;
+  transition: all 0.2s;
+  :hover {
+    background-color: #01013b;
+  }
 `;
