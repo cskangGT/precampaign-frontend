@@ -13,16 +13,16 @@ export default function ApplicantPics({ thumbnail }: ApplicantPicsProps) {
 }
 
 const Container = styled.div`
-  width: 400px;
+  width: 450px;
   height: 450p dx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 25px 50px;
+  padding: 25px;
 `;
 
 const UserImg = styled.img`
-  width: 400px;
+  width: 100%;
   border: 1px solid gray;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;

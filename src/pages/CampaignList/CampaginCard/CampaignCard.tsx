@@ -28,17 +28,19 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
           {title}
           {/* </Link> */}
         </Card>
-        <Card>{evaluation_start_date}</Card>
         <Card>
-          <GoToApplicants
-            onClick={() => {
-              goToApplicantList(id, title, status);
-            }}
-          >
-            신청자 보러 가기
-          </GoToApplicants>
+          {evaluation_start_date.slice(0, 4)}년 {evaluation_start_date.slice(5, 7)}월{' '}
+          {evaluation_start_date.slice(8, 10)}일
         </Card>
       </CampaignInfo>
+
+      <GoToApplicants
+        onClick={() => {
+          goToApplicantList(id, title, status);
+        }}
+      >
+        신청자 보러 가기
+      </GoToApplicants>
     </CampaignItem>
   );
 }
@@ -46,22 +48,46 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
 export default CampaignCard;
 
 const CampaignItem = styled.article`
-  margin: 30px 50px 0 50px;
+  margin: 30px 30px 30px;
+  width: 21%;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: lightgray;
+  border-radius: 10px;
+  transition: all 0.2s;
+  :hover {
+    background-color: gray;
+  }
 `;
 
 const CampaignImg = styled.img`
-  width: 275px;
+  width: 95%;
   height: 290px;
   border-radius: 5px;
 `;
 
 const CampaignInfo = styled.ul`
   text-decoration: none;
+  width: 275px;
+  height: 100px;
 `;
 
 const Card = styled.li`
-  margin: 16px 0;
   list-style: none;
+  height: 50%;
+  border: 1px solid darkgray;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :first-child {
+    margin-top: 5px;
+  }
 `;
 
 // const DetailLink = styled.link`
@@ -70,9 +96,24 @@ const Card = styled.li`
 // `;
 
 const GoToApplicants = styled.div`
-  margin: 0;
-  border: none;
+  margin: 16px 0;
+  list-style: none;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(1, 1, 59);
+  color: rgb(1, 1, 59);
+  border-radius: 10px;
+  margin-top: 25px;
   cursor: pointer;
-  font-size: 1rem;
   background-color: white;
+  transition: all 0.2s;
+  :hover {
+    background-color: rgb(1, 1, 59);
+    color: white;
+  }
 `;
