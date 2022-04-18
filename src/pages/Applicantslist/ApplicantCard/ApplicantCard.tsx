@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
+import {
+  avgRateState,
+  backgroundRateState,
+  creativityRateState,
+  trendRateState,
+} from '../../Recoil/Atoms/atomCampaign';
 import { ApplicantProps } from '../../types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-// import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
 
 export default function ApplicantCard({
@@ -13,32 +18,57 @@ export default function ApplicantCard({
   gender,
   height,
   weight,
-  platform,
   thumbnail,
+  platform,
   accountName,
-  keyword,
+  keywords,
   rate,
   campaignApplicantId,
   campaignParam,
   BASE_URL,
+  setAvgRate,
 }: ApplicantProps) {
   const [modal, setModal] = useState(false);
   const [applicantData, setApplicantData] = useState([]);
-  const token: any = localStorage.getItem('token');
-  // const;
-
+  const token: string | null = localStorage.getItem('access_token');
+  const rateKind = ['background', 'trend', 'creativity'];
+  const backgroundRate = useRecoilValue(backgroundRateState);
+  const trendRate = useRecoilValue(trendRateState);
+  const creativityRate = useRecoilValue(creativityRateState);
+  // const setAvgRateState = useSetRecoilState(avgRateState);
   // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 
   const toggleModal = () => {
     setModal(!modal);
-    fetch(`${BASE_URL}/rate/${campaignParam}?applicant-id=${id}`, {
+    fetch(`${BASE_URL}/applicant-images/${campaignParam}?applicant-id=${id}`, {
       headers: {
         Authorization: token,
       },
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         setApplicantData(res.image);
+      });
+  };
+
+  const sendRate = () => {
+    setModal(!modal);
+    console.log(campaignApplicantId);
+    fetch('http://172.1.4.173:8080/applicants/rate', {
+      method: 'POST',
+      headers: { authorization: token },
+      body: JSON.stringify({
+        campaign_applicant_id: campaignApplicantId,
+        background_rate: backgroundRate,
+        trend_rate: trendRate,
+        creativity_rate: creativityRate,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.rateAvg);
+        setAvgRate(res.rateAvg);
       });
   };
 
@@ -67,20 +97,16 @@ export default function ApplicantCard({
         </Thumbnail>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
-        <Platform>
-          {platform.map((item) => {
-            return <Platforms>{item}</Platforms>;
-          })}
-        </Platform>
+        <Platform>{platform}</Platform>
         <AccountName>{accountName}</AccountName>
         <Height>{height}</Height>
         <Weight>{weight}</Weight>
         <Keyword>
-          {keyword.map((item) => {
+          {keywords.map((item: string) => {
             return <Keywords>{item}</Keywords>;
           })}
         </Keyword>
-        <Rate>{rate}</Rate>
+        <Rate>{rate.rate_avg}</Rate>
         <RateModal>
           <ModalOpen onClick={toggleModal}>사진확인</ModalOpen>
           {modal && (
@@ -100,38 +126,37 @@ export default function ApplicantCard({
                       <UserWeight>{weight}</UserWeight>
                       <UserKeywordBox>Keyword</UserKeywordBox>
                       <UserKeyword>
-                        {keyword.map((item) => {
+                        {keywords.map((item: string) => {
                           return <Keywords>{item}/</Keywords>;
                         })}
                       </UserKeyword>
                     </UserInfo>
                   </UserInfoBox>
-                  {applicantData.map((e) => {
-                    return <ApplicantPics thumbnail={e} />;
+                  {applicantData.map((image) => {
+                    return <ApplicantPics thumbnail={image} />;
                   })}
                 </ListContainer>
-                <ModalClose onClick={toggleModal}>닫기</ModalClose>
                 <EvaluationStandard>
                   <BackgroundBox>
                     <Background>배경</Background>
                     <StarRate>
-                      <StarRating />
+                      <StarRating rateKind={rateKind[0]} />
                     </StarRate>
                   </BackgroundBox>
                   <TrendBox>
                     <Trend>트렌드</Trend>
                     <StarRate>
-                      <StarRating />
+                      <StarRating rateKind={rateKind[1]} />
                     </StarRate>
                   </TrendBox>
                   <CreativeBox>
                     <Creative>독창성</Creative>
                     <StarRate>
-                      <StarRating />
+                      <StarRating rateKind={rateKind[2]} />
                     </StarRate>
                   </CreativeBox>
                 </EvaluationStandard>
-                <EvaluationBtn>평가 완료</EvaluationBtn>
+                <EvaluationBtn onClick={sendRate}>평가 완료</EvaluationBtn>
               </ModalContent>
             </ModalWindow>
           )}
@@ -140,6 +165,7 @@ export default function ApplicantCard({
     </>
   );
 }
+//TODO: 두가지 로직 필요 평가 완료버튼으로 post 하는거, each StarRating 에서 저장 리코일로 받아서 쓰는거
 
 const Container = styled.div`
   height: 150px;
@@ -210,22 +236,6 @@ const ModalOpen = styled.button`
   border: 1px solid gray;
   border-radius: 10px;
   cursor: pointer;
-  :hover {
-    background-color: gray;
-    border: 1px solid darkgray;
-  }
-`;
-
-const ModalClose = styled.button`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 9px 12px;
-  cursor: pointer;
-  border-radius: 10px;
-  background-color: lightgray;
-  border: 1px solid gray;
-  font-size: 16px;
   :hover {
     background-color: gray;
     border: 1px solid darkgray;
@@ -393,3 +403,6 @@ const StarRate = styled.div`
   justify-content: center;
   align-items: center;
 `;
+function then(arg0: (res: { rate_avg: number }) => void) {
+  throw new Error('Function not implemented.');
+}

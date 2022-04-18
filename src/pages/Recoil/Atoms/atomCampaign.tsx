@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { ApplicantInfo } from '../../types';
+// import { ApplicantInfo } from '../../types';
 
 export const campaginNameState = atom({
   key: 'campaginNameState',
@@ -10,6 +10,24 @@ export const campaignStatusState = atom({
   key: 'campaignStatusState',
   default: '',
 });
+
+export const backgroundRateState = atom<number>({
+  key: 'backgroundRateState',
+  default: 20,
+});
+export const trendRateState = atom<number>({
+  key: 'trendRateState',
+  default: 0,
+});
+export const creativityRateState = atom<number>({
+  key: 'creativityRateState',
+  default: 0,
+});
+
+// export const avgRateState = atom<number>({
+//   key: 'avgRateState',
+//   default: 0,
+// });
 
 // export const applicantInfoState = atom<ApplicantInfo>({
 //   key: 'applicantInfoState',

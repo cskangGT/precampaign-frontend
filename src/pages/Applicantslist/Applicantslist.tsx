@@ -11,10 +11,10 @@ export default function List() {
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const accessToken = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.7.241:8081/campaigns';
+  const BASE_URL = 'http://172.1.4.173:8080/campaigns';
   // const BASE_URL = 'data/userData.json';
   const [applicantData, setApplicantData] = useState([]);
-  const [rateValue, setRateValue] = useState(0);
+  const [rateAvgValue, setRateAvgValue] = useState(0);
   const campaign_param = params.campaignId;
   // 어차피 state 값 변하면 reloading 됨.
   const goToBack = () => {
@@ -25,27 +25,27 @@ export default function List() {
     return navigate(`/campaigns/accepted-applicants-list/${params.campaignId}`);
   };
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     fetch(`${BASE_URL}/${params.campaignId}`, {
-  //       headers: { authorization: accessToken },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         // console.log(campaign_param);
-  //         setApplicantData(data);
-  //       });
-  //   }
-  // }, []);
-
   useEffect(() => {
-    fetch('/data/userData.json')
-      .then((res) => res.json())
-      .then((res) => {
-        setApplicantData(res.applicants);
-      });
-  }, []);
+    if (accessToken) {
+      fetch(`${BASE_URL}/${params.campaignId}`, {
+        headers: { authorization: accessToken },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // console.log(campaign_param);
+          setApplicantData(data);
+        });
+    }
+  }, [rateAvgValue]);
+
+  // useEffect(() => {
+  //   fetch('/data/userData.json')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setApplicantData(res.applicants);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -79,7 +79,7 @@ export default function List() {
               thumbnail,
               platform_account,
               platform,
-              keyword,
+              keywords,
               campaign_applicant_id,
               rate,
             }) => {
@@ -91,14 +91,15 @@ export default function List() {
                   gender={gender}
                   height={height}
                   weight={weight}
-                  platform={platform}
                   thumbnail={thumbnail}
+                  platform={platform}
                   accountName={platform_account}
-                  keyword={keyword}
+                  keywords={keywords}
                   rate={rate}
                   campaignApplicantId={campaign_applicant_id}
                   campaignParam={campaign_param}
                   BASE_URL={BASE_URL}
+                  setAvgRate={setRateAvgValue}
                 />
               );
             },

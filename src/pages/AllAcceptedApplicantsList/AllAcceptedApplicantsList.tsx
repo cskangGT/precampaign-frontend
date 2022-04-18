@@ -6,7 +6,7 @@ import UserList from './UserList';
 export default function List() {
   const navigate = useNavigate();
   const [allAcceptants, setAllAcceptants] = useState([]);
-  const token: any = localStorage.getItem('token');
+  const token: any = localStorage.getItem('access_token');
   const BASE_URL = 'http://172.1.7.241:8081/applicants';
   const back = () => {
     return navigate('/campaigns');
