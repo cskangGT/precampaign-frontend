@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
-import { backgroundRateState, creativityRateState, trendRateState } from '../../Recoil/Atoms/atomCampaign';
+import {
+  backgroundRateState,
+  campaignStatusState,
+  creativityRateState,
+  trendRateState,
+} from '../../Recoil/Atoms/atomCampaign';
 import { ApplicantProps } from '../../types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
@@ -30,6 +35,7 @@ export default function ApplicantCard({
   const backgroundRate = useRecoilValue(backgroundRateState);
   const trendRate = useRecoilValue(trendRateState);
   const creativityRate = useRecoilValue(creativityRateState);
+
   // const setAvgRateState = useSetRecoilState(avgRateState);
   // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
 

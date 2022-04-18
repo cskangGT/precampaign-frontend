@@ -59,7 +59,6 @@ export default function StarRating(rateKind: StarRatingProps) {
           );
         })}
       </div>
-      test: {backgroundRate}
     </div>
   );
 }

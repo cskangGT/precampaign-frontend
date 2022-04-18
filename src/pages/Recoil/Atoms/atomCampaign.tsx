@@ -13,7 +13,7 @@ export const campaignStatusState = atom({
 
 export const backgroundRateState = atom<number>({
   key: 'backgroundRateState',
-  default: 20,
+  default: 0,
 });
 export const trendRateState = atom<number>({
   key: 'trendRateState',

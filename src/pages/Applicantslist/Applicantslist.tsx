@@ -4,10 +4,12 @@ import styled from '@emotion/styled';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ApplicantCard from './ApplicantCard/ApplicantCard';
 import { campaginNameState, campaignStatusState } from '../Recoil/Atoms/atomCampaign';
+import { Button } from '@material-ui/core';
 
 export default function List() {
   const navigate = useNavigate();
   const params = useParams();
+  const setCampaignStatus = useSetRecoilState(campaignStatusState);
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const accessToken = localStorage.getItem('access_token');
@@ -39,17 +41,25 @@ export default function List() {
     }
   }, [rateAvgValue]);
 
-  // useEffect(() => {
-  //   fetch('/data/userData.json')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setApplicantData(res.applicants);
-  //     });
-  // }, []);
+  const terminateCampaign = () => {
+    fetch(`${BASE_URL}/${campaign_param}`, {
+      method: 'PATCH',
+      headers: { authorization: accessToken },
+      body: JSON.stringify({
+        status: 'Termination',
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log(res);
+        setCampaignStatus(res.status);
+      });
+  };
 
   return (
     <>
       <Container>
+        <Button onClick={terminateCampaign}> TEST</Button>
         <Nav>
           <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
           <CampaignTitle>{campaignName}</CampaignTitle>
