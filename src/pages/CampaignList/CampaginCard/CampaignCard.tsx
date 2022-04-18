@@ -55,11 +55,11 @@ const CampaignItem = styled.article`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: lightgray;
+  background-color: #edecec;
   border-radius: 10px;
   transition: all 0.2s;
   :hover {
-    background-color: gray;
+    background-color: lightgray;
   }
 `;
 
