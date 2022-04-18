@@ -76,9 +76,9 @@ export default function ApplicantCard({
   return (
     <>
       <Container>
-        <Thumbnail>
-          <img src={thumbnail} width="140px" />
-        </Thumbnail>
+        <ThumbnailBox>
+          <Thumbnail src={thumbnail}></Thumbnail>
+        </ThumbnailBox>
         <Name>{name}</Name>
         <Gender>{gender}</Gender>
         <Platform>{platform}</Platform>
@@ -171,8 +171,18 @@ const UserCard = styled.div`
 
 const Keywords = styled.div``;
 
-const Thumbnail = styled(UserCard)`
+const ThumbnailBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border-right: 1px solid lightgray;
   width: 18%;
+`;
+
+const Thumbnail = styled.img`
+  width: 200px;
+  border-radius: 5px;
 `;
 const Name = styled(UserCard)`
   width: 10%;
