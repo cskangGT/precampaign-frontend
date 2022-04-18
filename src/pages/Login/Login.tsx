@@ -43,7 +43,10 @@ export default function Login() {
     <>
       <Container>
         <LoginContainer>
-          <CompanyName>M L B</CompanyName>
+          <CompanyName>
+            <BrandName>MLB</BrandName>
+            Pre Campaign
+          </CompanyName>
           <LoginBox>
             <IdBox>
               <Id>ID</Id>
@@ -70,30 +73,40 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: sans-serif;
   box-sizing: border-box;
+  color: #01013b;
 `;
 
 const LoginContainer = styled.div`
   width: 600px;
   height: 700px;
-  /* background-color: lightgray; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
   border: 1px solid gray;
+  background-color: white;
 `;
 
 const CompanyName = styled.div`
+  width: 80%;
   font-size: 60px;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: 40px 0;
+`;
+
+const BrandName = styled.h1`
+  font-size: 60px;
+  font-weight: bold;
 `;
 
 const LoginBox = styled.form`
   width: 600px;
   height: 200px;
-  /* background-color: blue; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -103,33 +116,32 @@ const LoginBox = styled.form`
 const IdBox = styled.div`
   width: 500px;
   height: 75px;
-  /* background-color: gray; */
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
 
 const Id = styled.div`
-  width: 120px;
+  width: 100px;
   height: 47px;
-  /* background-color: skyblue; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const IdInput = styled.input`
-  width: 300px;
+  width: 320px;
   height: 47px;
   outline: none;
   padding-left: 13px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid gray;
+  font-size: 16px;
   :hover {
-    border: 2px solid #364f8c;
+    border: 2px solid #01013b;
   }
 `;
 
@@ -143,7 +155,7 @@ const PwBox = styled.div`
 `;
 
 const Pw = styled.div`
-  width: 120px;
+  width: 100px;
   height: 47px;
   /* background-color: skyblue; */
   display: flex;
@@ -151,18 +163,19 @@ const Pw = styled.div`
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const PwInput = styled.input`
-  width: 300px;
+  width: 320px;
   height: 47px;
   outline: none;
   padding-left: 13px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid gray;
+  font-size: 16px;
   :hover {
-    border: 2px solid #364f8c;
+    border: 2px solid #01013b;
   }
 `;
 
@@ -171,12 +184,13 @@ const LoginBtn = styled.button`
   height: 50px;
   background-color: gray;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 20px;
   border: none;
   color: white;
   border: 1px solid darkgray;
+  transition: all 0.2s;
   :hover {
-    background-color: #364f8c;
+    background-color: #01013b;
   }
 `;

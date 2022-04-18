@@ -18,9 +18,10 @@ export default function StarRating(rateKind: StarRatingProps) {
   const setCreativityRate = useSetRecoilState(creativityRateState);
   const backgroundRate = useRecoilValue(backgroundRateState);
 
-  const handleClick = (value: number, e: string) => {
+  const handleClick = (value: number, e: StarRatingProps) => {
     setCurrentValue(value);
     setBackgroundRate(value);
+    console.log(typeof rateKind);
     if (e.rateKind === 'background') {
       setBackgroundRate(value);
     } else if (e.rateKind === 'trend') {

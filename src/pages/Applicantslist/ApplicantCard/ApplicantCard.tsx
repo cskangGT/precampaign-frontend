@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ApplicantPics from '../RateModal/ApplicantPics/ApplicantPics';
 import StarRating from '../RateModal/StarRating/StarRating';
-import {
-  avgRateState,
-  backgroundRateState,
-  creativityRateState,
-  trendRateState,
-} from '../../Recoil/Atoms/atomCampaign';
+import { backgroundRateState, creativityRateState, trendRateState } from '../../Recoil/Atoms/atomCampaign';
 import { ApplicantProps } from '../../types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 // import { applicantInfoState } from '../../Recoil/Atoms/atomCampaign';
@@ -31,7 +26,7 @@ export default function ApplicantCard({
   const [modal, setModal] = useState(false);
   const [applicantData, setApplicantData] = useState([]);
   const token: string | null = localStorage.getItem('access_token');
-  const rateKind = ['background', 'trend', 'creativity'];
+  const rateKind: string[] = ['background', 'trend', 'creativity'];
   const backgroundRate = useRecoilValue(backgroundRateState);
   const trendRate = useRecoilValue(trendRateState);
   const creativityRate = useRecoilValue(creativityRateState);
@@ -150,7 +145,7 @@ export default function ApplicantCard({
                     </StarRate>
                   </TrendBox>
                   <CreativeBox>
-                    <Creative>독창성</Creative>
+                    <Creative>창의성</Creative>
                     <StarRate>
                       <StarRating rateKind={rateKind[2]} />
                     </StarRate>
@@ -232,7 +227,7 @@ const ModalOpen = styled.button`
   padding: 10px 20px;
   display: block;
   background-color: lightgray;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid gray;
   border-radius: 10px;
   cursor: pointer;
@@ -322,7 +317,7 @@ const UserHeight = styled(User)``;
 const UserWeight = styled(User)``;
 const UserKeyword = styled(User)`
   padding-left: 10px;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   justify-content: space-evenly;
 `;
