@@ -102,7 +102,6 @@ const CompanyName = styled.div`
 const LoginBox = styled.form`
   width: 600px;
   height: 200px;
-  /* background-color: blue; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -112,7 +111,6 @@ const LoginBox = styled.form`
 const IdBox = styled.div`
   width: 500px;
   height: 75px;
-  /* background-color: gray; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -121,13 +119,12 @@ const IdBox = styled.div`
 const Id = styled.div`
   width: 100px;
   height: 47px;
-  /* background-color: skyblue; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const IdInput = styled.input`
@@ -135,7 +132,7 @@ const IdInput = styled.input`
   height: 47px;
   outline: none;
   padding-left: 13px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid gray;
   font-size: 16px;
   :hover {
@@ -161,7 +158,7 @@ const Pw = styled.div`
   align-items: center;
   font-size: 18px;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const PwInput = styled.input`
@@ -169,7 +166,7 @@ const PwInput = styled.input`
   height: 47px;
   outline: none;
   padding-left: 13px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid gray;
   font-size: 16px;
   :hover {
@@ -182,7 +179,7 @@ const LoginBtn = styled.button`
   height: 50px;
   background-color: gray;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 20px;
   border: none;
   color: white;
