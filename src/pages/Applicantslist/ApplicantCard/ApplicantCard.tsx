@@ -128,7 +128,7 @@ export default function ApplicantCard({
                       <UserKeywordBox>Keyword</UserKeywordBox>
                       <UserKeyword>
                         {keywords.map((item: string, index: number) => {
-                          return <Keywords key={index}>{item}/</Keywords>;
+                          return <Keywords key={index}>{item}</Keywords>;
                         })}
                       </UserKeyword>
                     </UserInfo>
@@ -186,7 +186,6 @@ const UserCard = styled.div`
   border-right: 1px solid lightgray;
 `;
 
-const Platforms = styled.div``;
 const Keywords = styled.div``;
 
 const Thumbnail = styled(UserCard)`
@@ -337,6 +336,7 @@ const ListContainer = styled.div`
 `;
 
 const EvaluationStandard = styled.div`
+  background-color: white;
   position: absolute;
   bottom: 100px;
   right: 75px;
