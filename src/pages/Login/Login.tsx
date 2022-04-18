@@ -45,7 +45,7 @@ export default function Login() {
         <LoginContainer>
           <CompanyName>
             <BrandName>MLB</BrandName>
-            Pre Campaign
+            Pre Campaigns
           </CompanyName>
           <LoginBox>
             <IdBox>
@@ -91,7 +91,7 @@ const LoginContainer = styled.div`
 
 const CompanyName = styled.div`
   width: 80%;
-  font-size: 60px;
+  font-size: 45px;
   text-align: center;
   line-height: 1.5;
   border-top: 1px solid lightgray;
