@@ -25,9 +25,7 @@ export default function UserCard({
           </UserBirth>
         </UserInfoBox>
         <UserInfoBox>
-          <UserContact>
-            {contact.slice(0, 3)}.{contact.slice(3, 7)}.{contact.slice(7, 11)}
-          </UserContact>
+          <UserContact>{contact}</UserContact>
         </UserInfoBox>
       </Container>
     </>
