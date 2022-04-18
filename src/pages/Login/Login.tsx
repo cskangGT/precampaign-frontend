@@ -119,7 +119,7 @@ const IdBox = styled.div`
 `;
 
 const Id = styled.div`
-  width: 120px;
+  width: 100px;
   height: 47px;
   /* background-color: skyblue; */
   display: flex;
@@ -131,12 +131,13 @@ const Id = styled.div`
 `;
 
 const IdInput = styled.input`
-  width: 300px;
+  width: 320px;
   height: 47px;
   outline: none;
   padding-left: 13px;
   border-radius: 5px;
   border: 1px solid gray;
+  font-size: 16px;
   :hover {
     border: 2px solid #364f8c;
   }
@@ -152,7 +153,7 @@ const PwBox = styled.div`
 `;
 
 const Pw = styled.div`
-  width: 120px;
+  width: 100px;
   height: 47px;
   /* background-color: skyblue; */
   display: flex;
@@ -164,12 +165,13 @@ const Pw = styled.div`
 `;
 
 const PwInput = styled.input`
-  width: 300px;
+  width: 320px;
   height: 47px;
   outline: none;
   padding-left: 13px;
   border-radius: 5px;
   border: 1px solid gray;
+  font-size: 16px;
   :hover {
     border: 2px solid #364f8c;
   }
