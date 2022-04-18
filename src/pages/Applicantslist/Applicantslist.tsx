@@ -11,13 +11,11 @@ export default function List() {
   const setCampaignStatus = useSetRecoilState(campaignStatusState);
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
-  const accessToken = localStorage.getItem('access_token');
+  const token: string | null = localStorage.getItem('access_token');
   const BASE_URL = 'http://172.1.4.173:8080/campaigns';
-  // const BASE_URL = 'data/userData.json';
   const [applicantData, setApplicantData] = useState([]);
   const [rateAvgValue, setRateAvgValue] = useState(0);
   const campaign_param = params.campaignId;
-  // 어차피 state 값 변하면 reloading 됨.
   const goToBack = () => {
     return navigate(-1);
   };
@@ -26,15 +24,21 @@ export default function List() {
     return navigate(`/campaigns/accepted-applicants-list/${params.campaignId}`);
   };
 
+  const requestHeaders: HeadersInit = new Headers();
+
+  if (token === null) {
+    console.log('token is null');
+  } else {
+    requestHeaders.set('Authorization', token);
+  }
+
   useEffect(() => {
-    if (accessToken) {
+    if (token) {
       fetch(`${BASE_URL}/${params.campaignId}`, {
-        headers: { authorization: accessToken },
+        headers: requestHeaders,
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          // console.log(campaign_param);
           setApplicantData(data);
         });
     }
@@ -43,7 +47,7 @@ export default function List() {
   const terminateCampaign = () => {
     fetch(`${BASE_URL}/${campaign_param}`, {
       method: 'PATCH',
-      headers: { authorization: accessToken },
+      headers: requestHeaders,
       body: JSON.stringify({
         status: 'Termination',
       }),

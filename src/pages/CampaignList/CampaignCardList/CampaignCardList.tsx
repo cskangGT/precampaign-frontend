@@ -1,8 +1,7 @@
 import React from 'react';
-// import searchData from '../PclDummy/PclDummy';
 import styled from '@emotion/styled';
 import CampaignCard from '../CampaginCard/CampaignCard';
-import { CampaignCardInfo } from '../../types';
+import { CampaignCardInfo } from '../../Types/types';
 
 interface CampaignCardListProps {
   searchInputText: string;
@@ -10,8 +9,6 @@ interface CampaignCardListProps {
 }
 
 function CampaignCardList({ searchInputText, campaignCardList }: CampaignCardListProps) {
-  console.log(campaignCardList);
-
   const filterData = campaignCardList.filter((el) => {
     if (searchInputText === '') {
       return el;
@@ -29,14 +26,6 @@ function CampaignCardList({ searchInputText, campaignCardList }: CampaignCardLis
   );
 }
 
-{
-  /* <CardList>
-{productList.map((product) => (
-  <ProductItem key={product.id} product={product} />
-))}
-</CardList> */
-}
-
 export default CampaignCardList;
 
 const SearchItems = styled.ul`
@@ -44,7 +33,6 @@ const SearchItems = styled.ul`
   display: flex;
   width: 90%;
   flex-wrap: wrap;
-  /* justify-content: center; */
 `;
 
 // typeof Array -> Object shows up

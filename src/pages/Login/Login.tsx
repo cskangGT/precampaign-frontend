@@ -15,7 +15,6 @@ export default function Login() {
   };
 
   const navigate = useNavigate();
-  // http://3.36.173.130:8000/users/signin
 
   const handleLogin = () => {
     fetch('http://172.1.4.173:8080/users/signin', {

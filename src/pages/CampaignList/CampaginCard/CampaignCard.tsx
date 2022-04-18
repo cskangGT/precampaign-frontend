@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import styled from '@emotion/styled';
-import { CampaignCardProps } from '../../types';
+import { CampaignCardProps } from '../../Types/types';
 import { campaginNameState, campaignStatusState } from '../../Recoil/Atoms/atomCampaign';
 
 function CampaignCard({ campaignCard }: CampaignCardProps) {
@@ -11,8 +11,8 @@ function CampaignCard({ campaignCard }: CampaignCardProps) {
   const setCampainName = useSetRecoilState(campaginNameState);
   const setCampaignStatus = useSetRecoilState(campaignStatusState);
 
-  const goToApplicantList = (promId: number, campTitle: string, campStatus: string) => {
-    navigate(`/campaigns/${promId}`);
+  const goToApplicantList = (paramId: number, campTitle: string, campStatus: string) => {
+    navigate(`/campaigns/${paramId}`);
     setCampainName(campTitle);
     setCampaignStatus(campStatus);
   };

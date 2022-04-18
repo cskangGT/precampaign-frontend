@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { backgroundRateState, creativityRateState, trendRateState } from '../../../Recoil/Atoms/atomCampaign';
-import { StarRatingProps } from '../../../types';
+import { StarRatingProps } from '../../../Types/types';
 
 const colors = {
   orange: '#FFBA5A',

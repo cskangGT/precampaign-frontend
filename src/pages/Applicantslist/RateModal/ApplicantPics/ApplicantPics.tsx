@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ApplicantPicsProps } from '../../../types';
+import { ApplicantPicsProps } from '../../../Types/types';
 
 export default function ApplicantPics({ thumbnail }: ApplicantPicsProps) {
   return (

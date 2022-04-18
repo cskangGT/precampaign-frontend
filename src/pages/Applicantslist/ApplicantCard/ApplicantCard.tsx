@@ -36,19 +36,19 @@ export default function ApplicantCard({
   const trendRate = useRecoilValue(trendRateState);
   const creativityRate = useRecoilValue(creativityRateState);
 
-  // const setAvgRateState = useSetRecoilState(avgRateState);
-  // const setApplicantInfoState = useSetRecoilState(applicantInfoState);
-
+  const requestHeaders: HeadersInit = new Headers();
+  if (token === null) {
+    console.log('token is null');
+  } else {
+    requestHeaders.set('Authorization', token);
+  }
   const toggleModal = () => {
     setModal(!modal);
     fetch(`${BASE_URL}/applicant-images/${campaignParam}?applicant-id=${id}`, {
-      headers: {
-        Authorization: token,
-      },
+      headers: requestHeaders,
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setApplicantData(res.image);
       });
   };
@@ -58,7 +58,7 @@ export default function ApplicantCard({
     console.log(campaignApplicantId);
     fetch('http://172.1.4.173:8080/applicants/rate', {
       method: 'POST',
-      headers: { authorization: token },
+      headers: requestHeaders,
       body: JSON.stringify({
         campaign_applicant_id: campaignApplicantId,
         background_rate: backgroundRate,
@@ -72,23 +72,6 @@ export default function ApplicantCard({
         setAvgRate(res.rateAvg);
       });
   };
-
-  // useEffect(() => {
-  //   fetch('/data/data.json')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setApplicantData(res.Data);
-  //     });
-  // }, []);
-
-  // const sendRate = () => {
-  //   fetch('', {
-  //     method: 'POST',
-  //     body: JSON.stringify({}),
-  //   }).then((res) => res.json);
-  // };
-
-  //TODO: campaignApplicantId 보내주기
 
   return (
     <>
@@ -407,3 +390,5 @@ const StarRate = styled.div`
 function then(arg0: (res: { rate_avg: number }) => void) {
   throw new Error('Function not implemented.');
 }
+
+//TODO: campaignApplicantId 보내주기
