@@ -12,7 +12,7 @@ export default function List() {
   const campaignStatus = useRecoilValue(campaignStatusState);
   const campaignName = useRecoilValue(campaginNameState);
   const token: string | null = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.4.173:8080/campaigns';
+  const BASE_URL = 'http://3.36.173.130:8081/campaigns';
   const [applicantData, setApplicantData] = useState([]);
   const [rateAvgValue, setRateAvgValue] = useState(0);
   const campaign_param = params.campaignId;
@@ -183,7 +183,7 @@ const GogoToBack = styled.button`
 `;
 
 const CampaignTitle = styled.div`
-  width: 400px;
+  width: 500px;
   height: 50px;
   background-color: lightgray;
   border-radius: 10px;
