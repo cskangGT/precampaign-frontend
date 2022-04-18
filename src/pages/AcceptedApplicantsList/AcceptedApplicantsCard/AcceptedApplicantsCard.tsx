@@ -34,7 +34,9 @@ export default function UserCard({
 
 const Container = styled.div`
   width: 25%;
+  height: 50%;
   display: flex;
+  overflow: auto;
   flex-direction: column;
   align-items: center;
   padding: 25px 50px;
