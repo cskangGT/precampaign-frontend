@@ -75,6 +75,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
+  color: #01013b;
 `;
 
 const LoginContainer = styled.div`
@@ -136,7 +137,7 @@ const IdInput = styled.input`
   border: 1px solid gray;
   font-size: 16px;
   :hover {
-    border: 2px solid #364f8c;
+    border: 2px solid #01013b;
   }
 `;
 
@@ -170,7 +171,7 @@ const PwInput = styled.input`
   border: 1px solid gray;
   font-size: 16px;
   :hover {
-    border: 2px solid #364f8c;
+    border: 2px solid #01013b;
   }
 `;
 
@@ -186,6 +187,6 @@ const LoginBtn = styled.button`
   border: 1px solid darkgray;
   transition: all 0.2s;
   :hover {
-    background-color: #364f8c;
+    background-color: #01013b;
   }
 `;
