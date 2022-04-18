@@ -75,7 +75,7 @@ const CampaignList: React.FC = () => {
       <Main>
         <Header>
           <HeaderBrand>MLB</HeaderBrand>
-          Pre-Campaigns
+          Pre Campaigns
         </Header>
         <SearchBar>
           <TextField
@@ -94,9 +94,7 @@ const CampaignList: React.FC = () => {
             }}
           />
         </SearchBar>
-        <GoToAllAccepted onClick={goToAllAcceptants}>
-          <h4>수락된 신청자 보기</h4>
-        </GoToAllAccepted>
+        <GoToAllAccepted onClick={goToAllAcceptants}>수락된 신청자 보기</GoToAllAccepted>
         <ProgressContainer>
           <ProgressBox>
             <ShowAll onClick={() => changeSection('')}>전체보기</ShowAll>
@@ -150,13 +148,14 @@ const GoToAllAccepted = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
   position: absolute;
   top: 70px;
   right: 50px;
-  width: 125px;
-  height: 40px;
+  width: 150px;
+  height: 50px;
   margin: 0;
+  font-size: 15px;
   background-color: #364f8c;
   box-sizing: border-box;
   border: none;
@@ -192,7 +191,7 @@ const ShowBox = styled.li`
   height: 50px;
   background-color: #364f8c;
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   list-style: none;
   cursor: pointer;
   margin-right: 15%;
@@ -205,8 +204,8 @@ const ShowProgess = styled(ShowBox)``;
 const ShowTermination = styled(ShowBox)``;
 
 const SortSelectBox = styled.select`
-  width: 130px;
-  height: 40px;
+  width: 140px;
+  height: 45px;
   text-align: center;
   border-radius: 5px;
   border-color: #d9dbe1;
