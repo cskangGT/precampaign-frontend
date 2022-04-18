@@ -59,7 +59,6 @@ export default function List() {
   return (
     <>
       <Container>
-        <Button onClick={terminateCampaign}> TEST</Button>
         <Nav>
           <NavLeft>
             <GogoToBack onClick={goToBack}>뒤로 가기</GogoToBack>
@@ -68,7 +67,7 @@ export default function List() {
             <CampaignTitle>{campaignName}</CampaignTitle>
           </NavCenter>
           <NavRight>
-            <CampaignEnd>캠페인 종료</CampaignEnd>
+            <CampaignEnd onClick={terminateCampaign}>캠페인 종료</CampaignEnd>
             {campaignStatus === 'Termination' && <GoToResult onClick={goToAcceptedPplList}>결과 확인</GoToResult>}
           </NavRight>
         </Nav>
