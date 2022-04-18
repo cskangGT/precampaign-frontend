@@ -21,7 +21,7 @@ export default function UserCard({
         </UserInfoBox>
         <UserInfoBox>
           <UserBirth>
-            {birthdate.slice(0, 4)}년 {birthdate.slice(4, 6)}월 {birthdate.slice(6, 8)}일
+            {birthdate.slice(0, 4)}년 {birthdate.slice(5, 7)}월 {birthdate.slice(8, 10)}일
           </UserBirth>
         </UserInfoBox>
         <UserInfoBox>
