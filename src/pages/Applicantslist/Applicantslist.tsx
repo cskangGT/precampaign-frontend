@@ -183,7 +183,7 @@ const GogoToBack = styled.button`
 `;
 
 const CampaignTitle = styled.div`
-  width: 400px;
+  width: 500px;
   height: 50px;
   background-color: lightgray;
   border-radius: 10px;
