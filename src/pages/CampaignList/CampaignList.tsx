@@ -190,6 +190,11 @@ const ShowBox = styled.li`
   list-style: none;
   cursor: pointer;
   margin-right: 15%;
+  transition: all 0.3s;
+  :hover {
+    background-color: black;
+    color: white;
+  }
 `;
 
 const ShowAll = styled(ShowBox)``;
