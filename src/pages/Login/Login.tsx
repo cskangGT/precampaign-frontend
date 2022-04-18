@@ -43,7 +43,11 @@ export default function Login() {
     <>
       <Container>
         <LoginContainer>
-          <CompanyName>M L B</CompanyName>
+          <CompanyName>
+            MLB
+            <br />
+            Pre Campaign
+          </CompanyName>
           <LoginBox>
             <IdBox>
               <Id>ID</Id>
@@ -70,24 +74,29 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: sans-serif;
   box-sizing: border-box;
 `;
 
 const LoginContainer = styled.div`
   width: 600px;
   height: 700px;
-  /* background-color: lightgray; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
   border: 1px solid gray;
+  background-color: white;
 `;
 
 const CompanyName = styled.div`
+  width: 80%;
   font-size: 60px;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding: 40px 0;
 `;
 
 const LoginBox = styled.form`
@@ -176,6 +185,7 @@ const LoginBtn = styled.button`
   border: none;
   color: white;
   border: 1px solid darkgray;
+  transition: all 0.2s;
   :hover {
     background-color: #364f8c;
   }
