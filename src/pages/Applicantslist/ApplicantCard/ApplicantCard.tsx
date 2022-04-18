@@ -56,7 +56,7 @@ export default function ApplicantCard({
   const sendRate = () => {
     setModal(!modal);
     console.log(campaignApplicantId);
-    fetch('http://172.1.4.173:8080/applicants/rate', {
+    fetch('http://3.36.173.130:8081/applicants/rate', {
       method: 'POST',
       headers: requestHeaders,
       body: JSON.stringify({

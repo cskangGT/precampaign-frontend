@@ -8,7 +8,7 @@ export default function AcceptedApplicantsList() {
   const params = useParams();
   const navigate = useNavigate();
   const token: any = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.4.173:8080/campaigns/accepted-applicants-list';
+  const BASE_URL = 'http://3.36.173.130:8081/campaigns/accepted-applicants-list';
   const back = () => {
     return navigate(-1);
   };

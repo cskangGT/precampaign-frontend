@@ -17,7 +17,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    fetch('http://172.1.4.173:8080/users/signin', {
+    fetch('http://3.36.173.130:8081/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: idValue,

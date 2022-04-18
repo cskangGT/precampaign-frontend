@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CampaignCardList from './CampaignCardList/CampaignCardList';
 
 const CampaignList: React.FC = () => {
-  const BASE_URL = 'http://172.1.4.173:8080';
+  const BASE_URL = 'http://3.36.173.130:8081';
   const token: string | null = localStorage.getItem('access_token');
   const location = useLocation();
   const navigate = useNavigate();
@@ -96,7 +96,7 @@ const CampaignList: React.FC = () => {
           </ProgressBox>
           <SortSelectBox onChange={updateSort}>
             <option value="sort=">정렬하기</option>
-            <option value="sort_order=desc&sort_by=createdAt">캠페인 생성순</option>
+            <option value="sort_order=asc&sort_by=createdAt">캠페인 생성순</option>
             <option value="sort_order=desc&sort_by=count">신청자 순</option>
           </SortSelectBox>
         </ProgressContainer>

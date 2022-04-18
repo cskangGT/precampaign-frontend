@@ -7,7 +7,7 @@ export default function List() {
   const navigate = useNavigate();
   const [allAcceptantsCard, setAllAcceptantsCard] = useState([]);
   const token: any = localStorage.getItem('access_token');
-  const BASE_URL = 'http://172.1.4.173:8080/applicants';
+  const BASE_URL = 'http://3.36.173.130:8081/applicants';
   const back = () => {
     return navigate('/campaigns');
   };
@@ -41,12 +41,12 @@ export default function List() {
             <AcceptedCampaignsTitle>Accepted Campaigns</AcceptedCampaignsTitle>
           </TitleBox>
           {allAcceptantsCard.map(
-            ({ id, name, thumbnail, gender, platforms, accountName, height, weight, keywords, campaigns }) => {
+            ({ id, name, thumbnail_url, gender, platforms, accountName, height, weight, keywords, campaigns }) => {
               return (
                 <AllAcceptantsCard
                   key={id}
                   name={name}
-                  thumbnail={thumbnail}
+                  thumbnail={thumbnail_url}
                   gender={gender}
                   platforms={platforms}
                   accountName={accountName}
