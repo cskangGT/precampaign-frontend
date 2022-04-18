@@ -69,7 +69,7 @@ const Thumbnail = styled(UserCard)`
 `;
 
 const ThumbnailImg = styled.img`
-  width: 120px;
+  width: 200px;
   border-radius: 5px;
 `;
 const Name = styled(UserCard)`
