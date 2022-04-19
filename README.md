@@ -1,4 +1,4 @@
-**Pre-campagin Inner API project**
+**Pre-Campaign Inner API Project**
 
 
 :: **팀 소개**
@@ -7,7 +7,7 @@
 * 강성훈, 김준영
 
 
-:: **UI prototype design**
+:: **UI Prototype Design**
 
 
 ![image](https://user-images.githubusercontent.com/42740545/162650903-cc9fcf63-3900-4825-8056-dc29c425dc0c.png)
