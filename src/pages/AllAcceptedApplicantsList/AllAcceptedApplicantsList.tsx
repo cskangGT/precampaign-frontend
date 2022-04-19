@@ -90,6 +90,7 @@ const GoBack = styled.button`
   border: 1px solid gray;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.2s;
   :hover {
     background-color: gray;
     border: 1px solid darkgrey;
