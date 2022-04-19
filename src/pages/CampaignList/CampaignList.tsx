@@ -154,6 +154,11 @@ const GoToAllAccepted = styled.button`
   border: none;
   color: white;
   cursor: pointer;
+  transition: all 0.3s;
+  :hover {
+    background-color: black;
+    color: white;
+  }
 `;
 
 const ProgressContainer = styled.div`
