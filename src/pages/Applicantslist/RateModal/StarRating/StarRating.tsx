@@ -32,15 +32,11 @@ export default function StarRating(rateKind: StarRatingProps) {
   };
   const handleMouseOver = (value: any) => {
     setHoverValue(value);
-    // console.log(hoverValue);
   };
 
   const handleMouseLeave = () => {
     setHoverValue(undefined);
-    // console.log(hoverValue);
   };
-
-  //TODO: 여기다가 star value post 하고 그리고 어떻게 update 할지 useEffecgt관려해서 진목님꺼 봐보기
 
   return (
     <div style={styles.container}>

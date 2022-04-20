@@ -182,6 +182,7 @@ const ThumbnailBox = styled.div`
 
 const Thumbnail = styled.img`
   width: 200px;
+  height: 140px;
   border-radius: 5px;
 `;
 const Name = styled(UserCard)`
