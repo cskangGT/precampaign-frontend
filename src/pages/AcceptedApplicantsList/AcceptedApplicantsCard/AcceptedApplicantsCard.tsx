@@ -48,6 +48,7 @@ const Container = styled.div`
 
 const UserImg = styled.img`
   width: 300px;
+  height: 250px;
   border: 1px solid gray;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
