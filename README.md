@@ -102,11 +102,11 @@
 
       * 강성훈
         * 초기세팅(Webpack, Barbel)
-        * 캠페인리스트 페이지 기능 구현, 통신
-        * 캠페인별 신청자리스트 페이지 기능 구현, 통신
+        * 캠페인리스트 페이지 UI, 기능 구현, 통신
+        * 캠페인별 신청자리스트 페이지 UI, 기능 구현, 통신
         * 캠페인별 수락된 신청자 페이지 기능 구현, 통신
         * 모든 수락된 신청자 페이지 기능 구현, 통신
-        * Recoil로 평점 통신 구현
+        * Recoil점 통신 구현
 
       * 김준영
         * Modal 기능 구현
@@ -144,7 +144,8 @@
     <a href="#"><img src="https://img.shields.io/badge/React-68D5F3?style=plastic&logo=react&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/webpack-8DD6F9?style=plastic&logo=webpack&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/recoil-232F3E?style=plastic&logo=recoil&logoColor=white"/></a>
-     <a href="#"><img src="https://img.shields.io/badge/barbel-F76934?style=plastic&logo=barbel&logoColor=white"/></a>
+    <a href="#"><img src="https://img.shields.io/badge/barbel-F76934?style=plastic&logo=barbel&logoColor=white"/></a>
+    <a href="#"><img src="https://img.shields.io/badge/emotion-000000?style=plastic&logo=emotion&logoColor=white"/></a>
     
 * #### BACKEND
     <a href="#"><img src="https://img.shields.io/badge/javascript-EFD81D?style=plastic&logo=javascript&logoColor=white"/></a>
