@@ -143,7 +143,7 @@
     <a href="#"><img src="https://img.shields.io/badge/typescript-3178C6?style=plastic&logo=typescript&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/React-68D5F3?style=plastic&logo=react&logoColor=white"/></a>
     <a href="#"><img src="https://img.shields.io/badge/webpack-8DD6F9?style=plastic&logo=webpack&logoColor=white"/></a>
-    <a href="#"><img src="https://img.shields.io/badge/recoil-E34F26?style=plastic&logo=recoil&logoColor=white"/></a>
+    <a href="#"><img src="https://img.shields.io/badge/recoil-232F3E?style=plastic&logo=recoil&logoColor=white"/></a>
     
 * #### BACKEND
     <a href="#"><img src="https://img.shields.io/badge/javascript-EFD81D?style=plastic&logo=javascript&logoColor=white"/></a>
