@@ -66,6 +66,14 @@
 신청자와 직원, 그리고 캠페인 간의 N:M ( 다대다 ) 관계 <br>
 신청자와 캠페인의 중간테이블 ID와 직원 ID를 통해 배경, 트렌드, 독창성에 대한 평가 점수를 갖는 테이블
 
+<br>
+
+## MIRO Data-flow at Front-side (logics & fetch)
+
+![image](https://user-images.githubusercontent.com/42740545/164161537-069eeb56-6e3f-46fb-ae64-cdc5d017d6a4.png)
+
+
+
 
 <br>
 
