@@ -120,7 +120,7 @@
         * 로그인 페이지 
         * Modal 페이지 구현
         * 평점 기능 구현
-        * 전체 UI, Styling
+        * 전체 UI, Styling 수정
 
 
    * #### BACKEND
